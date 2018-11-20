@@ -1,11 +1,13 @@
-version: "3"
+version: "3.7"
 
 services:
 
   namenode:
     image: timveil/docker-hadoop-namenode:2.7.x
+    container_name: namenode
+    hostname: namenode
     environment:
-      - CLUSTER_NAME=test
+      - CLUSTER_NAME=hive-1.2.x
     env_file:
       - core.env
       - yarn.env
@@ -14,6 +16,8 @@ services:
 
   datanode:
     image: timveil/docker-hadoop-datanode:2.7.x
+    container_name: datanode
+    hostname: datanode
     environment:
       - SERVICE_PRECONDITION=namenode:50070
     env_file:
@@ -24,6 +28,8 @@ services:
 
   resourcemanager:
     image: timveil/docker-hadoop-resourcemanager:2.7.x
+    container_name: resourcemanager
+    hostname: resourcemanager
     environment:
       - SERVICE_PRECONDITION=namenode:50070 datanode:50075
     env_file:
@@ -34,6 +40,8 @@ services:
 
   nodemanager:
     image: timveil/docker-hadoop-nodemanager:2.7.x
+    container_name: nodemanager
+    hostname: nodemanager
     environment:
       - SERVICE_PRECONDITION=namenode:50070 datanode:50075 resourcemanager:8088
     env_file:
@@ -44,6 +52,8 @@ services:
 
   historyserver:
     image: timveil/docker-hadoop-historyserver:2.7.x
+    container_name: historyserver
+    hostname: historyserver
     environment:
       - SERVICE_PRECONDITION=namenode:50070 datanode:50075 resourcemanager:8088
     env_file:
@@ -54,6 +64,8 @@ services:
 
   hs2:
     image: timveil/docker-hadoop-hive-hs2:1.2.x
+    container_name: hs2
+    hostname: hs2
     environment:
       - SERVICE_PRECONDITION=metastore:9083
     env_file:
@@ -66,6 +78,8 @@ services:
 
   metastore:
     image: timveil/docker-hadoop-hive-metastore:1.2.x
+    container_name: metastore
+    hostname: metastore
     environment:
       - SERVICE_PRECONDITION=namenode:50070 datanode:50075 metastore-db:5432
     env_file:
@@ -77,3 +91,5 @@ services:
 
   metastore-db:
     image: timveil/docker-hadoop-hive-metastore-db:1.2.x
+    container_name: metastore-db
+    hostname: metastore-db
