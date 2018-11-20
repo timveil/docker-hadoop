@@ -87,8 +87,6 @@ services:
       - yarn.env
       - hive.env
       - metastore.env
-    ports:
-      - "9083:9083"
 
   metastore-db:
     image: timveil/docker-hadoop-hive-metastore-db:3.1.x
