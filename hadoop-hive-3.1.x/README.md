@@ -103,23 +103,12 @@ $ docker-compose exec hs2 bash
 
 ## Exposed UI Interfaces
 
-### Name Node Overview
-http://localhost:9870
-
-### Data Node Overview
-http://localhost:9864
-
-### YARN Resource Manager
-http://localhost:8088
-
-### YARN Node Manager
-http://localhost:8042
-
-### YARN Application History
-http://localhost:8188
-
-### HiveServer 2
-http://localhost:10002
+* Name Node Overview - http://localhost:9870
+* Data Node Overview - http://localhost:9864
+* YARN Resource Manager - http://localhost:8088
+* YARN Node Manager - http://localhost:8042
+* YARN Application History - http://localhost:8188
+* HiveServer 2 - http://localhost:10002
 
 ## Docker Images
 * Hadoop NameNode - [timveil/docker-hadoop-namenode:3.1.x](https://hub.docker.com/r/timveil/docker-hadoop-namenode/)
