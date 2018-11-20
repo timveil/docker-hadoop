@@ -1,0 +1,79 @@
+version: "3"
+
+services:
+
+  namenode:
+    image: timveil/docker-hadoop-namenode:2.7.x
+    environment:
+      - CLUSTER_NAME=test
+    env_file:
+      - core.env
+      - yarn.env
+    ports:
+      - "50070:50070"
+
+  datanode:
+    image: timveil/docker-hadoop-datanode:2.7.x
+    environment:
+      - SERVICE_PRECONDITION=namenode:50070
+    env_file:
+      - core.env
+      - yarn.env
+    ports:
+      - "50075:50075"
+
+  resourcemanager:
+    image: timveil/docker-hadoop-resourcemanager:2.7.x
+    environment:
+      - SERVICE_PRECONDITION=namenode:50070 datanode:50075
+    env_file:
+      - core.env
+      - yarn.env
+    ports:
+      - "8088:8088"
+
+  nodemanager:
+    image: timveil/docker-hadoop-nodemanager:2.7.x
+    environment:
+      - SERVICE_PRECONDITION=namenode:50070 datanode:50075 resourcemanager:8088
+    env_file:
+      - core.env
+      - yarn.env
+    ports:
+      - "8042:8042"
+
+  historyserver:
+    image: timveil/docker-hadoop-historyserver:2.7.x
+    environment:
+      - SERVICE_PRECONDITION=namenode:50070 datanode:50075 resourcemanager:8088
+    env_file:
+      - core.env
+      - yarn.env
+    ports:
+      - "8188:8188"
+
+  hs2:
+    image: timveil/docker-hadoop-hive-hs2:1.2.x
+    environment:
+      - SERVICE_PRECONDITION=metastore:9083
+    env_file:
+      - core.env
+      - yarn.env
+      - hive.env
+    ports:
+      - "10000:10000"
+      - "10002:10002"
+
+  metastore:
+    image: timveil/docker-hadoop-hive-metastore:1.2.x
+    environment:
+      - SERVICE_PRECONDITION=namenode:50070 datanode:50075 metastore-db:5432
+    env_file:
+      - core.env
+      - yarn.env
+      - hive.env
+    ports:
+      - "9083:9083"
+
+  metastore-db:
+    image: timveil/docker-hadoop-hive-metastore-db:1.2.x
