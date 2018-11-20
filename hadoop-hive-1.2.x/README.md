@@ -52,7 +52,7 @@ HIVE_SITE_CONF_datanucleus_autoCreateSchema=false
 ### yarn.env
 ```properties
 YARN_CONF_yarn_log___aggregation___enable=true
-YARN_CONF_yarn_log_server_url=http://historyserver:8188/applicationhistory/logs/
+YARN_CONF_yarn_log_server_url=http://localhost:8188/applicationhistory/logs/
 
 YARN_CONF_yarn_resourcemanager_address=resourcemanager:8032
 YARN_CONF_yarn_resourcemanager_hostname=resourcemanager
@@ -92,6 +92,26 @@ $ docker-compose exec hs2 bash
 > SELECT * FROM pokes;
 > !quit
 ```
+
+## Exposed UI Interfaces
+
+### Name Node Overview
+http://localhost:50070
+
+### Data Node Overview
+http://localhost:50075
+
+### YARN Resource Manager
+http://localhost:8088
+
+### YARN Node Manager
+http://localhost:8042
+
+### YARN Application History
+http://localhost:8188
+
+### HiveServer 2
+http://localhost:10002
 
 ## Docker Images
 * Hadoop NameNode - [timveil/docker-hadoop-namenode:2.7.x](https://hub.docker.com/r/timveil/docker-hadoop-namenode/)

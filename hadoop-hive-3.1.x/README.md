@@ -53,7 +53,7 @@ HIVE_SITE_CONF_datanucleus_autoStartMechanismMode=ignored
 ### yarn.env
 ```properties
 YARN_CONF_yarn_log___aggregation___enable=true
-YARN_CONF_yarn_log_server_url=http://historyserver:8188/applicationhistory/logs/
+YARN_CONF_yarn_log_server_url=http://localhost:8188/applicationhistory/logs/
 
 YARN_CONF_yarn_resourcemanager_address=resourcemanager:8032
 YARN_CONF_yarn_resourcemanager_hostname=resourcemanager
