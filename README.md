@@ -18,4 +18,4 @@ docker ps -aq --no-trunc -f status=exited | xargs docker rm
 Remove all dangling images:
 ```bash
 docker images -q --filter dangling=true | xargs docker rmi
-```
+
