@@ -10,7 +10,7 @@ services:
       - CLUSTER_NAME=hive-1.2.x
     env_file:
       - core.env
-      - yarn.env
+      - yarn-remote.env
     ports:
       - "50070:50070"
 
@@ -22,7 +22,7 @@ services:
       - SERVICE_PRECONDITION=namenode:50070
     env_file:
       - core.env
-      - yarn.env
+      - yarn-remote.env
     ports:
       - "50075:50075"
 
@@ -34,7 +34,7 @@ services:
       - SERVICE_PRECONDITION=namenode:50070 datanode:50075
     env_file:
       - core.env
-      - yarn.env
+      - yarn-resource-manager.env
     ports:
       - "8088:8088"
 
@@ -46,7 +46,7 @@ services:
       - SERVICE_PRECONDITION=namenode:50070 datanode:50075 resourcemanager:8088
     env_file:
       - core.env
-      - yarn.env
+      - yarn-node-manager.env
     ports:
       - "8042:8042"
 
@@ -58,7 +58,7 @@ services:
       - SERVICE_PRECONDITION=namenode:50070 datanode:50075 resourcemanager:8088
     env_file:
       - core.env
-      - yarn.env
+      - yarn-timeline.env
     ports:
       - "8188:8188"
 
@@ -70,11 +70,10 @@ services:
       - SERVICE_PRECONDITION=metastore:9083
     env_file:
       - core.env
-      - yarn.env
+      - yarn-remote.env
       - hive.env
     ports:
       - "10000:10000"
-      - "10002:10002"
 
   metastore:
     image: timveil/docker-hadoop-hive-metastore:1.2.x
@@ -84,7 +83,7 @@ services:
       - SERVICE_PRECONDITION=namenode:50070 datanode:50075 metastore-db:5432
     env_file:
       - core.env
-      - yarn.env
+      - yarn-remote.env
       - hive.env
 
   metastore-db:

@@ -29,12 +29,22 @@ Exiting configuration files and their default values are listed below.  Please n
 
 ### core.env
 ```properties
+HADOOP_LOG_DIR=/var/log/hadoop
+YARN_LOG_DIR=/var/log/hadoop
+
 CORE_CONF_fs_defaultFS=hdfs://namenode:8020
 CORE_CONF_hadoop_http_staticuser_user=root
 
 HDFS_CONF_dfs_namenode_datanode_registration_ip___hostname___check=false
 HDFS_CONF_dfs_permissions_enabled=false
 HDFS_CONF_dfs_webhdfs_enabled=true
+
+YARN_CONF_yarn_nodemanager_resource_memory___mb=6144
+YARN_CONF_yarn_resourcemanager_recovery_enabled=true
+YARN_CONF_yarn_resourcemanager_store_class=org.apache.hadoop.yarn.server.resourcemanager.recovery.FileSystemRMStateStore
+YARN_CONF_yarn_resourcemanager_system___metrics___publisher_enabled=true
+YARN_CONF_yarn_timeline___service_enabled=true
+YARN_CONF_yarn_timeline___service_generic___application___history_enabled=true
 ```
 
 ### hive.env
@@ -49,24 +59,32 @@ HIVE_SITE_CONF_datanucleus_autoCreateSchema=false
 HIVE_SITE_CONF_hive_metastore_uris=thrift://metastore:9083
 ```
 
-### yarn.env
+### yarn-node-manager.env
 ```properties
-YARN_CONF_yarn_log___aggregation___enable=true
-YARN_CONF_yarn_log_server_url=http://localhost:8188/applicationhistory/logs/
-
-YARN_CONF_yarn_resourcemanager_address=resourcemanager:8032
 YARN_CONF_yarn_resourcemanager_hostname=resourcemanager
-YARN_CONF_yarn_resourcemanager_recovery_enabled=true
-YARN_CONF_yarn_resourcemanager_resource__tracker_address=resourcemanager:8031
-YARN_CONF_yarn_resourcemanager_scheduler_address=resourcemanager:8030
-YARN_CONF_yarn_resourcemanager_store_class=org.apache.hadoop.yarn.server.resourcemanager.recovery.FileSystemRMStateStore
-YARN_CONF_yarn_resourcemanager_system___metrics___publisher_enabled=true
-
-YARN_CONF_yarn_timeline___service_enabled=true
-YARN_CONF_yarn_timeline___service_generic___application___history_enabled=true
 YARN_CONF_yarn_timeline___service_hostname=historyserver
+YARN_CONF_yarn_nodemanager_hostname=localhost
+```
 
-YARN_CONF_yarn_nodemanager_resource_memory___mb=6144
+### yarn-remote.env
+```properties
+YARN_CONF_yarn_resourcemanager_hostname=resourcemanager
+YARN_CONF_yarn_timeline___service_hostname=historyserver
+YARN_CONF_yarn_nodemanager_hostname=nodemanager
+```
+
+### yarn-resource-manager.env
+```properties
+YARN_CONF_yarn_resourcemanager_hostname=localhost
+YARN_CONF_yarn_timeline___service_hostname=historyserver
+YARN_CONF_yarn_nodemanager_hostname=nodemanager
+```
+
+### yarn-timeline.env
+```properties
+YARN_CONF_yarn_resourcemanager_hostname=resourcemanager
+YARN_CONF_yarn_timeline___service_hostname=localhost
+YARN_CONF_yarn_nodemanager_hostname=nodemanager
 ```
 
 ## Docker Compose
