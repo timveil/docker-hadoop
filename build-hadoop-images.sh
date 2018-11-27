@@ -20,4 +20,4 @@ curl -v -H "Content-Type: application/json" --data '{"build": true}' -X POST htt
 
 curl -v -H "Content-Type: application/json" --data '{"build": true}' -X POST https://registry.hub.docker.com/u/timveil/docker-hadoop-hive-metastore/trigger/9cab31ef-dec5-4bcd-a869-897bbf27fd95/
 
-curl -v -H "Content-Type: application/json" --data 'cl{"build": true}' -X POST https://registry.hub.docker.com/u/timveil/docker-hadoop-hive-metastore-db/trigger/46fa5969-ee1c-42bc-84e9-baa17c4289da/
+curl -v -H "Content-Type: application/json" --data '{"build": true}' -X POST https://registry.hub.docker.com/u/timveil/docker-hadoop-hive-metastore-db/trigger/46fa5969-ee1c-42bc-84e9-baa17c4289da/
