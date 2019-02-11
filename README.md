@@ -1,6 +1,6 @@
 # Docker for Hadoop
 
-Then inspiration for this project came from my need to quickly spin up functional Hadoop clusters for testing things my [Hive JDBC Driver](https://github.com/timveil/hive-jdbc-driver) project.  These images are not intended to be production ready Hadoop clusters although I'm quite certain they could be extended to get there.
+Then inspiration for this project came from my need to quickly spin up functional Hadoop clusters for testing things like my [Hive JDBC Driver](https://github.com/timveil/hive-jdbc-driver) project.  These images are not intended to be production ready Hadoop clusters although I'm quite certain they could be extended to get there.
 
 Many thanks to projects like https://github.com/big-data-europe/docker-hadoop and various forks for a starting place and ideas. 
 
