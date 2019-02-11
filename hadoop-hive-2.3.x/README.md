@@ -61,30 +61,19 @@ HIVE_SITE_CONF_hive_metastore_uris=thrift://metastore:9083
 
 ### yarn-node-manager.env
 ```properties
-YARN_CONF_yarn_resourcemanager_hostname=resourcemanager
-YARN_CONF_yarn_timeline___service_hostname=historyserver
-YARN_CONF_yarn_nodemanager_hostname=localhost
+YARN_CONF_yarn_resourcemanager_resource___tracker_address=resourcemanager:8031
 ```
 
 ### yarn-remote.env
 ```properties
-YARN_CONF_yarn_resourcemanager_hostname=resourcemanager
-YARN_CONF_yarn_timeline___service_hostname=historyserver
-YARN_CONF_yarn_nodemanager_hostname=nodemanager
 ```
 
 ### yarn-resource-manager.env
 ```properties
-YARN_CONF_yarn_resourcemanager_hostname=localhost
-YARN_CONF_yarn_timeline___service_hostname=historyserver
-YARN_CONF_yarn_nodemanager_hostname=nodemanager
 ```
 
 ### yarn-timeline.env
 ```properties
-YARN_CONF_yarn_resourcemanager_hostname=resourcemanager
-YARN_CONF_yarn_timeline___service_hostname=localhost
-YARN_CONF_yarn_nodemanager_hostname=nodemanager
 ```
 
 ## Docker Compose
@@ -129,3 +118,15 @@ $ docker-compose exec hs2 bash
 * Hive Hiverserver2 - [timveil/docker-hadoop-hive-hs2:2.3.x](https://hub.docker.com/r/timveil/docker-hadoop-hive-hs2/)
 * Hive Metastore - [timveil/docker-hadoop-hive-metastore:2.3.x](https://hub.docker.com/r/timveil/docker-hadoop-hive-metastore/)
 * Hive Metastore Postgres DB - [timveil/docker-hadoop-hive-metastore-db:2.3.x](https://hub.docker.com/r/timveil/docker-hadoop-hive-metastore-db/)
+
+## Open Interactive Shells
+```bash
+docker exec -ti namenode /bin/bash
+docker exec -ti datanode /bin/bash
+docker exec -ti resourcemanager /bin/bash
+docker exec -ti nodemanager /bin/bash
+docker exec -ti historyserver /bin/bash
+docker exec -ti hs2 /bin/bash
+docker exec -ti metastore /bin/bash
+docker exec -ti metastore-db /bin/bash
+```
