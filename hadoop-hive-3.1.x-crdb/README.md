@@ -1,4 +1,4 @@
-# Hadoop 2.8.x and Hive 2.3.x Example
+# Hadoop 3.1.x and Hive 3.1.x Example
 The `docker-compose.yml` contains the following services:
 * `namenode` - Apache Hadoop NameNode
 * `datanode` - Apache Hadoop DataNode
@@ -15,6 +15,7 @@ Hadoop configuration parameters are provided by the following `.env` files.  Ult
 * `HDFS_CONF_*` > `hdfs-site.xml`
 * `HIVE_SITE_CONF_*` > `hive-site.xml`
 * `YARN_CONF_*` > `yarn-site.xml`
+* `METASTORE_SITE_CONF_*` > `metastore-site.xml`
 
 Key names use the following character conversions:
 * a single underscore `_` equals dot `.`
@@ -32,7 +33,7 @@ Exiting configuration files and their default values are listed below.  Please n
 HADOOP_LOG_DIR=/var/log/hadoop
 YARN_LOG_DIR=/var/log/hadoop
 
-CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+CORE_CONF_fs_defaultFS=hdfs://namenode:9820
 CORE_CONF_hadoop_http_staticuser_user=root
 
 HDFS_CONF_dfs_namenode_datanode_registration_ip___hostname___check=false
@@ -40,11 +41,12 @@ HDFS_CONF_dfs_permissions_enabled=false
 HDFS_CONF_dfs_webhdfs_enabled=true
 
 YARN_CONF_yarn_nodemanager_resource_memory___mb=6144
+YARN_CONF_yarn_nodemanager_aux___services=mapreduce_shuffle
+YARN_CONF_yarn_nodemanager_aux___services_mapreduce__shuffle_cs=org.apache.hadoop.mapred.ShuffleHandler
 YARN_CONF_yarn_resourcemanager_recovery_enabled=true
 YARN_CONF_yarn_resourcemanager_store_class=org.apache.hadoop.yarn.server.resourcemanager.recovery.FileSystemRMStateStore
 YARN_CONF_yarn_resourcemanager_system___metrics___publisher_enabled=true
 YARN_CONF_yarn_timeline___service_enabled=true
-YARN_CONF_yarn_timeline___service_generic___application___history_enabled=true
 ```
 
 ### hive.env
@@ -55,8 +57,8 @@ HIVE_SITE_CONF_javax_jdo_option_ConnectionUserName=hive
 HIVE_SITE_CONF_javax_jdo_option_ConnectionPassword=hive
 HIVE_SITE_CONF_hive_server2_transport_mode=binary
 HIVE_SITE_CONF_hive_execution_engine=tez
-HIVE_SITE_CONF_datanucleus_autoCreateSchema=false
-HIVE_SITE_CONF_hive_metastore_uris=thrift://metastore:9083
+HIVE_SITE_CONF_datanucleus_schema_autoCreateAll=false
+HIVE_SITE_CONF_datanucleus_autoStartMechanismMode=ignored
 ```
 
 ### yarn-node-manager.env
@@ -76,11 +78,16 @@ YARN_CONF_yarn_resourcemanager_resource___tracker_address=resourcemanager:8031
 ```properties
 ```
 
+### metastore.env
+```properties
+METASTORE_SITE_CONF_metastore_thrift_uris=thrift://metastore:9083
+```
+
 ## Docker Compose
 
 ### Start the Containers
 ```bash
-docker-compose up -d
+docker-compose up
 ```
 
 ### Stop and Destroy the Containers
@@ -102,22 +109,22 @@ $ docker-compose exec hs2 bash
 
 ## Exposed UI Interfaces
 
-* Name Node Overview - http://localhost:50070
-* Data Node Overview - http://localhost:50075
+* Name Node Overview - http://localhost:9870
+* Data Node Overview - http://localhost:9864
 * YARN Resource Manager - http://localhost:8088
 * YARN Node Manager - http://localhost:8042
 * YARN Application History - http://localhost:8188
 * HiveServer 2 - http://localhost:10002
 
 ## Docker Images
-* Hadoop NameNode - [timveil/docker-hadoop-namenode:2.8.x](https://hub.docker.com/r/timveil/docker-hadoop-namenode/)
-* Hadoop DataNode - [timveil/docker-hadoop-datanode:2.8.x](https://hub.docker.com/r/timveil/docker-hadoop-datanode/)
-* YARN Resource Manager - [timveil/docker-hadoop-resourcemanager:2.8.x](https://hub.docker.com/r/timveil/docker-hadoop-resourcemanager/)
-* YARN Node Manager - [timveil/docker-hadoop-nodemanager:2.8.x](https://hub.docker.com/r/timveil/docker-hadoop-nodemanager/)
-* YARN Timeline Server - [timveil/docker-hadoop-historyserver:2.8.x](https://hub.docker.com/r/timveil/docker-hadoop-historyserver/)
-* Hive Hiverserver2 - [timveil/docker-hadoop-hive-hs2:2.3.x](https://hub.docker.com/r/timveil/docker-hadoop-hive-hs2/)
-* Hive Metastore - [timveil/docker-hadoop-hive-metastore:2.3.x](https://hub.docker.com/r/timveil/docker-hadoop-hive-metastore/)
-* Hive Metastore Postgres DB - [timveil/docker-hadoop-hive-metastore-db:2.3.x](https://hub.docker.com/r/timveil/docker-hadoop-hive-metastore-db/)
+* Hadoop NameNode - [timveil/docker-hadoop-namenode:3.1.x](https://hub.docker.com/r/timveil/docker-hadoop-namenode/)
+* Hadoop DataNode - [timveil/docker-hadoop-datanode:3.1.x](https://hub.docker.com/r/timveil/docker-hadoop-datanode/)
+* YARN Resource Manager - [timveil/docker-hadoop-resourcemanager:3.1.x](https://hub.docker.com/r/timveil/docker-hadoop-resourcemanager/)
+* YARN Node Manager - [timveil/docker-hadoop-nodemanager:3.1.x](https://hub.docker.com/r/timveil/docker-hadoop-nodemanager/)
+* YARN Timeline Server - [timveil/docker-hadoop-historyserver:3.1.x](https://hub.docker.com/r/timveil/docker-hadoop-historyserver/)
+* Hive Hiverserver2 - [timveil/docker-hadoop-hive-hs2:3.1.x](https://hub.docker.com/r/timveil/docker-hadoop-hive-hs2/)
+* Hive Metastore - [timveil/docker-hadoop-hive-metastore:3.1.x](https://hub.docker.com/r/timveil/docker-hadoop-hive-metastore/)
+* Hive Metastore Postgres DB - [timveil/docker-hadoop-hive-metastore-db:3.1.x](https://hub.docker.com/r/timveil/docker-hadoop-hive-metastore-db/)
 
 ## Open Interactive Shells
 ```bash
