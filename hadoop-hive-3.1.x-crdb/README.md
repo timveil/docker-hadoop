@@ -7,7 +7,7 @@ The `docker-compose.yml` contains the following services:
 * `historyserver` - Apache Hadoop YARN Timeline Manager
 * `hs2` - Apache Hive HiveServer2
 * `metastore` - Apache Hive Metastore
-* `metastore-db` - Postgres DB that supports the Apache Hive Metastore
+* `metastore-db` - CockroachDB that supports the Apache Hive Metastore
 
 ## Configuration
 Hadoop configuration parameters are provided by the following `.env` files.  Ultimately these values are written to the appropriate Hadoop XML configuration file.  For Example, properties beginning with the following keys map the following files:
@@ -51,14 +51,13 @@ YARN_CONF_yarn_timeline___service_enabled=true
 
 ### hive.env
 ```properties
-HIVE_SITE_CONF_javax_jdo_option_ConnectionURL=jdbc:postgresql://metastore-db/metastore
+HIVE_SITE_CONF_javax_jdo_option_ConnectionURL=jdbc:postgresql://metastore-db:26257/metastore?ApplicationName=hive&sslmode=disable
 HIVE_SITE_CONF_javax_jdo_option_ConnectionDriverName=org.postgresql.Driver
 HIVE_SITE_CONF_javax_jdo_option_ConnectionUserName=hive
 HIVE_SITE_CONF_javax_jdo_option_ConnectionPassword=hive
 HIVE_SITE_CONF_hive_server2_transport_mode=binary
 HIVE_SITE_CONF_hive_execution_engine=tez
-HIVE_SITE_CONF_datanucleus_schema_autoCreateAll=false
-HIVE_SITE_CONF_datanucleus_autoStartMechanismMode=ignored
+HIVE_SITE_CONF_datanucleus_schema_autoCreateAll=true
 ```
 
 ### yarn-node-manager.env
@@ -115,6 +114,7 @@ $ docker-compose exec hs2 bash
 * YARN Node Manager - http://localhost:8042
 * YARN Application History - http://localhost:8188
 * HiveServer 2 - http://localhost:10002
+* CockroachDB Dashboard - http://localhost:8080
 
 ## Docker Images
 * Hadoop NameNode - [timveil/docker-hadoop-namenode:3.1.x](https://hub.docker.com/r/timveil/docker-hadoop-namenode/)
@@ -124,7 +124,7 @@ $ docker-compose exec hs2 bash
 * YARN Timeline Server - [timveil/docker-hadoop-historyserver:3.1.x](https://hub.docker.com/r/timveil/docker-hadoop-historyserver/)
 * Hive Hiverserver2 - [timveil/docker-hadoop-hive-hs2:3.1.x](https://hub.docker.com/r/timveil/docker-hadoop-hive-hs2/)
 * Hive Metastore - [timveil/docker-hadoop-hive-metastore:3.1.x](https://hub.docker.com/r/timveil/docker-hadoop-hive-metastore/)
-* Hive Metastore Postgres DB - [timveil/docker-hadoop-hive-metastore-db:3.1.x](https://hub.docker.com/r/timveil/docker-hadoop-hive-metastore-db/)
+* Hive Metastore CockroachDB - [cockroachdb/cockroach:latest](https://hub.docker.com/r/cockroachdb/cockroach/)
 
 ## Open Interactive Shells
 ```bash
