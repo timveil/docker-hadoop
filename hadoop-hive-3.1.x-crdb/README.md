@@ -51,13 +51,13 @@ YARN_CONF_yarn_timeline___service_enabled=true
 
 ### hive.env
 ```properties
-HIVE_SITE_CONF_javax_jdo_option_ConnectionURL=jdbc:postgresql://metastore-db:26257/metastore?ApplicationName=hive&sslmode=disable
+HIVE_SITE_CONF_javax_jdo_option_ConnectionURL=jdbc:postgresql://metastore-db:5432/metastore?ApplicationName=hive
 HIVE_SITE_CONF_javax_jdo_option_ConnectionDriverName=org.postgresql.Driver
 HIVE_SITE_CONF_javax_jdo_option_ConnectionUserName=hive
 HIVE_SITE_CONF_javax_jdo_option_ConnectionPassword=hive
 HIVE_SITE_CONF_hive_server2_transport_mode=binary
 HIVE_SITE_CONF_hive_execution_engine=tez
-HIVE_SITE_CONF_datanucleus_schema_autoCreateAll=true
+HIVE_SITE_CONF_datanucleus_schema_autoCreateAll=false
 ```
 
 ### yarn-node-manager.env
@@ -120,6 +120,7 @@ $ docker-compose exec hs2 bash
 * YARN Application History - http://localhost:8188
 * HiveServer 2 - http://localhost:10002
 * CockroachDB Dashboard - http://localhost:8080
+* HAProxy Dashboard - http://localhost:8081
 
 ## Docker Images
 * Hadoop NameNode - [timveil/docker-hadoop-namenode:3.1.x](https://hub.docker.com/r/timveil/docker-hadoop-namenode/)
