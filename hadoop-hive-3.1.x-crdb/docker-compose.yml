@@ -93,6 +93,9 @@ services:
     hostname: metastore-db
     image: cockroachdb/cockroach:latest
     command: start --logtostderr --insecure --max-sql-memory=4GB
+    ports:
+      - "26257:26257"
+      - "8080:8080"
     volumes:
       - ${PWD}/sql:/cockroach/sql
 
