@@ -86,12 +86,17 @@ METASTORE_SITE_CONF_metastore_thrift_uris=thrift://metastore:9083
 
 ### Start the Containers
 ```bash
-docker-compose up
+./up.sh
 ```
 
 ### Stop and Destroy the Containers
 ```bash
-docker-compose down
+./down.sh
+```
+
+### Prune Docker
+```bash
+./prune.sh
 ```
 
 ## Testing
