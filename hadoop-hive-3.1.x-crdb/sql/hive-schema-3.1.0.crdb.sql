@@ -8,9 +8,6 @@ SET search_path = public, pg_catalog;
 --SET default_tablespace = '';
 --SET default_with_oids = false;
 
---
--- Name: BUCKETING_COLS; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE TABLE "BUCKETING_COLS" (
     "SD_ID" bigint NOT NULL,
@@ -19,20 +16,10 @@ CREATE TABLE "BUCKETING_COLS" (
     PRIMARY KEY ("SD_ID", "INTEGER_IDX")
 );
 
-
---
--- Name: CDS; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE TABLE "CDS" (
     "CD_ID" bigint NOT NULL,
     PRIMARY KEY ("CD_ID")
 );
-
-
---
--- Name: COLUMNS_V2; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE TABLE "COLUMNS_V2" (
     "CD_ID" bigint NOT NULL,
@@ -43,11 +30,6 @@ CREATE TABLE "COLUMNS_V2" (
     PRIMARY KEY ("CD_ID", "COLUMN_NAME")
 );
 
-
---
--- Name: DATABASE_PARAMS; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE TABLE "DATABASE_PARAMS" (
     "DB_ID" bigint NOT NULL,
     "PARAM_KEY" character varying(180) NOT NULL,
@@ -55,17 +37,12 @@ CREATE TABLE "DATABASE_PARAMS" (
     PRIMARY KEY ("DB_ID", "PARAM_KEY")
 );
 
-
 CREATE TABLE "CTLGS" (
     "CTLG_ID" BIGINT PRIMARY KEY,
     "NAME" VARCHAR(256) UNIQUE,
     "DESC" VARCHAR(4000),
     "LOCATION_URI" VARCHAR(4000) NOT NULL
 );
-
---
--- Name: DBS; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE TABLE "DBS" (
     "DB_ID" bigint NOT NULL,
@@ -77,11 +54,6 @@ CREATE TABLE "DBS" (
     "CTLG_NAME" varchar(256),
     PRIMARY KEY ("DB_ID")
 );
-
-
---
--- Name: DB_PRIVS; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE TABLE "DB_PRIVS" (
     "DB_GRANT_ID" bigint NOT NULL,
@@ -97,11 +69,6 @@ CREATE TABLE "DB_PRIVS" (
     PRIMARY KEY ("DB_GRANT_ID")
 );
 
-
---
--- Name: GLOBAL_PRIVS; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE TABLE "GLOBAL_PRIVS" (
     "USER_GRANT_ID" bigint NOT NULL,
     "CREATE_TIME" bigint NOT NULL,
@@ -114,11 +81,6 @@ CREATE TABLE "GLOBAL_PRIVS" (
     "AUTHORIZER" character varying(128) DEFAULT NULL::character varying,
     PRIMARY KEY ("USER_GRANT_ID")
 );
-
-
---
--- Name: IDXS; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE TABLE "IDXS" (
     "INDEX_ID" bigint NOT NULL,
@@ -133,22 +95,12 @@ CREATE TABLE "IDXS" (
     PRIMARY KEY ("INDEX_ID")
 );
 
-
---
--- Name: INDEX_PARAMS; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE TABLE "INDEX_PARAMS" (
     "INDEX_ID" bigint NOT NULL,
     "PARAM_KEY" character varying(256) NOT NULL,
     "PARAM_VALUE" character varying(4000) DEFAULT NULL::character varying,
     PRIMARY KEY ("INDEX_ID", "PARAM_KEY")
 );
-
-
---
--- Name: NUCLEUS_TABLES; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE TABLE "NUCLEUS_TABLES" (
     "CLASS_NAME" character varying(128) NOT NULL,
@@ -160,11 +112,6 @@ CREATE TABLE "NUCLEUS_TABLES" (
     PRIMARY KEY ("CLASS_NAME")
 );
 
-
---
--- Name: PARTITIONS; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE TABLE "PARTITIONS" (
     "PART_ID" bigint NOT NULL,
     "CREATE_TIME" bigint NOT NULL,
@@ -174,11 +121,6 @@ CREATE TABLE "PARTITIONS" (
     "TBL_ID" bigint,
     PRIMARY KEY ("PART_ID")
 );
-
-
---
--- Name: PARTITION_EVENTS; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE TABLE "PARTITION_EVENTS" (
     "PART_NAME_ID" bigint NOT NULL,
@@ -191,11 +133,6 @@ CREATE TABLE "PARTITION_EVENTS" (
     PRIMARY KEY ("PART_NAME_ID")
 );
 
-
---
--- Name: PARTITION_KEYS; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE TABLE "PARTITION_KEYS" (
     "TBL_ID" bigint NOT NULL,
     "PKEY_COMMENT" character varying(4000) DEFAULT NULL::character varying,
@@ -205,11 +142,6 @@ CREATE TABLE "PARTITION_KEYS" (
     PRIMARY KEY ("TBL_ID", "PKEY_NAME")
 );
 
-
---
--- Name: PARTITION_KEY_VALS; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE TABLE "PARTITION_KEY_VALS" (
     "PART_ID" bigint NOT NULL,
     "PART_KEY_VAL" character varying(256) DEFAULT NULL::character varying,
@@ -217,22 +149,12 @@ CREATE TABLE "PARTITION_KEY_VALS" (
     PRIMARY KEY ("PART_ID", "INTEGER_IDX")
 );
 
-
---
--- Name: PARTITION_PARAMS; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE TABLE "PARTITION_PARAMS" (
     "PART_ID" bigint NOT NULL,
     "PARAM_KEY" character varying(256) NOT NULL,
     "PARAM_VALUE" character varying(4000) DEFAULT NULL::character varying,
     PRIMARY KEY ("PART_ID", "PARAM_KEY")
 );
-
-
---
--- Name: PART_COL_PRIVS; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE TABLE "PART_COL_PRIVS" (
     "PART_COLUMN_GRANT_ID" bigint NOT NULL,
@@ -249,11 +171,6 @@ CREATE TABLE "PART_COL_PRIVS" (
     PRIMARY KEY ("PART_COLUMN_GRANT_ID")
 );
 
-
---
--- Name: PART_PRIVS; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE TABLE "PART_PRIVS" (
     "PART_GRANT_ID" bigint NOT NULL,
     "CREATE_TIME" bigint NOT NULL,
@@ -268,11 +185,6 @@ CREATE TABLE "PART_PRIVS" (
     PRIMARY KEY ("PART_GRANT_ID")
 );
 
-
---
--- Name: ROLES; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE TABLE "ROLES" (
     "ROLE_ID" bigint NOT NULL,
     "CREATE_TIME" bigint NOT NULL,
@@ -280,11 +192,6 @@ CREATE TABLE "ROLES" (
     "ROLE_NAME" character varying(128) DEFAULT NULL::character varying,
     PRIMARY KEY ("ROLE_ID")
 );
-
-
---
--- Name: ROLE_MAP; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE TABLE "ROLE_MAP" (
     "ROLE_GRANT_ID" bigint NOT NULL,
@@ -297,11 +204,6 @@ CREATE TABLE "ROLE_MAP" (
     "ROLE_ID" bigint,
     PRIMARY KEY ("ROLE_GRANT_ID")
 );
-
-
---
--- Name: SDS; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE TABLE "SDS" (
     "SD_ID" bigint NOT NULL,
@@ -316,22 +218,12 @@ CREATE TABLE "SDS" (
     PRIMARY KEY ("SD_ID")
 );
 
-
---
--- Name: SD_PARAMS; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE TABLE "SD_PARAMS" (
     "SD_ID" bigint NOT NULL,
     "PARAM_KEY" character varying(256) NOT NULL,
     "PARAM_VALUE" text DEFAULT NULL,
     PRIMARY KEY ("SD_ID", "PARAM_KEY")
 );
-
-
---
--- Name: SEQUENCE_TABLE; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE TABLE "SEQUENCE_TABLE" (
     "SEQUENCE_NAME" character varying(255) NOT NULL,
@@ -340,10 +232,6 @@ CREATE TABLE "SEQUENCE_TABLE" (
 );
 
 INSERT INTO "SEQUENCE_TABLE" ("SEQUENCE_NAME", "NEXT_VAL") VALUES ('org.apache.hadoop.hive.metastore.model.MNotificationLog', 1);
-
---
--- Name: SERDES; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE TABLE "SERDES" (
     "SERDE_ID" bigint NOT NULL,
@@ -356,22 +244,12 @@ CREATE TABLE "SERDES" (
     PRIMARY KEY ("SERDE_ID")
 );
 
-
---
--- Name: SERDE_PARAMS; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE TABLE "SERDE_PARAMS" (
     "SERDE_ID" bigint NOT NULL,
     "PARAM_KEY" character varying(256) NOT NULL,
     "PARAM_VALUE" text DEFAULT NULL,
     PRIMARY KEY ("SERDE_ID", "PARAM_KEY")
 );
-
-
---
--- Name: SORT_COLS; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE TABLE "SORT_COLS" (
     "SD_ID" bigint NOT NULL,
@@ -381,22 +259,12 @@ CREATE TABLE "SORT_COLS" (
     PRIMARY KEY ("SD_ID", "INTEGER_IDX")
 );
 
-
---
--- Name: TABLE_PARAMS; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE TABLE "TABLE_PARAMS" (
     "TBL_ID" bigint NOT NULL,
     "PARAM_KEY" character varying(256) NOT NULL,
     "PARAM_VALUE" text DEFAULT NULL,
     PRIMARY KEY ("TBL_ID", "PARAM_KEY")
 );
-
-
---
--- Name: TBLS; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE TABLE "TBLS" (
     "TBL_ID" bigint NOT NULL,
@@ -415,10 +283,6 @@ CREATE TABLE "TBLS" (
     PRIMARY KEY ("TBL_ID")
 );
 
---
--- Name: MV_CREATION_METADATA; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE TABLE "MV_CREATION_METADATA" (
     "MV_CREATION_METADATA_ID" bigint NOT NULL,
     "CAT_NAME" character varying(256) NOT NULL,
@@ -429,18 +293,10 @@ CREATE TABLE "MV_CREATION_METADATA" (
     PRIMARY KEY ("MV_CREATION_METADATA_ID")
 );
 
---
--- Name: MV_TABLES_USED; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE TABLE "MV_TABLES_USED" (
     "MV_CREATION_METADATA_ID" bigint NOT NULL,
     "TBL_ID" bigint NOT NULL
 );
-
---
--- Name: TBL_COL_PRIVS; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE TABLE "TBL_COL_PRIVS" (
     "TBL_COLUMN_GRANT_ID" bigint NOT NULL,
@@ -457,11 +313,6 @@ CREATE TABLE "TBL_COL_PRIVS" (
     PRIMARY KEY ("TBL_COLUMN_GRANT_ID")
 );
 
-
---
--- Name: TBL_PRIVS; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE TABLE "TBL_PRIVS" (
     "TBL_GRANT_ID" bigint NOT NULL,
     "CREATE_TIME" bigint NOT NULL,
@@ -476,11 +327,6 @@ CREATE TABLE "TBL_PRIVS" (
     PRIMARY KEY ("TBL_GRANT_ID")
 );
 
-
---
--- Name: TYPES; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE TABLE "TYPES" (
     "TYPES_ID" bigint NOT NULL,
     "TYPE_NAME" character varying(128) DEFAULT NULL::character varying,
@@ -488,11 +334,6 @@ CREATE TABLE "TYPES" (
     "TYPE2" character varying(767) DEFAULT NULL::character varying,
     PRIMARY KEY ("TYPES_ID")
 );
-
-
---
--- Name: TYPE_FIELDS; Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE TABLE "TYPE_FIELDS" (
     "TYPE_NAME" bigint NOT NULL,
@@ -536,11 +377,6 @@ CREATE TABLE "SKEWED_VALUES" (
     PRIMARY KEY ("SD_ID_OID", "INTEGER_IDX")
 );
 
-
---
--- Name: TAB_COL_STATS Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE TABLE  "MASTER_KEYS"
 (
     "KEY_ID" SERIAL,
@@ -580,19 +416,12 @@ CREATE TABLE "TAB_COL_STATS" (
  PRIMARY KEY("CS_ID")
 );
 
---
--- Table structure for VERSION
---
 CREATE TABLE "VERSION" (
   "VER_ID" bigint,
   "SCHEMA_VERSION" character varying(127) NOT NULL,
   "VERSION_COMMENT" character varying(255) NOT NULL,
   PRIMARY KEY ("VER_ID")
 );
-
---
--- Name: PART_COL_STATS Type: TABLE; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE TABLE "PART_COL_STATS" (
  "CS_ID" bigint NOT NULL,
@@ -620,9 +449,6 @@ CREATE TABLE "PART_COL_STATS" (
  PRIMARY KEY("CS_ID")
 );
 
---
--- Table structure for FUNCS
---
 CREATE TABLE "FUNCS" (
   "FUNC_ID" BIGINT NOT NULL,
   "CLASS_NAME" VARCHAR(4000),
@@ -635,9 +461,6 @@ CREATE TABLE "FUNCS" (
   PRIMARY KEY ("FUNC_ID")
 );
 
---
--- Table structure for FUNC_RU
---
 CREATE TABLE "FUNC_RU" (
   "FUNC_ID" BIGINT NOT NULL,
   "RESOURCE_TYPE" INTEGER NOT NULL,
@@ -687,9 +510,6 @@ CREATE TABLE "KEY_CONSTRAINTS"
   PRIMARY KEY ("CONSTRAINT_NAME", "POSITION")
 ) ;
 
----
---- Table structure for METASTORE_DB_PROPERTIES
----
 CREATE TABLE "METASTORE_DB_PROPERTIES"
 (
   "PROPERTY_KEY" VARCHAR(255) NOT NULL,
@@ -744,630 +564,116 @@ CREATE TABLE "WM_MAPPING" (
     PRIMARY KEY ("MAPPING_ID")
 );
 
---
--- Name: BUCKETING_COLS_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
--- ALTER TABLE ONLY "BUCKETING_COLS"
---     ADD CONSTRAINT "BUCKETING_COLS_pkey" PRIMARY KEY ("SD_ID", "INTEGER_IDX");
-
-
---
--- Name: CDS_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
--- ALTER TABLE ONLY "CDS"
---     ADD CONSTRAINT "CDS_pkey" PRIMARY KEY ("CD_ID");
-
-
---
--- Name: COLUMNS_V2_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
--- ALTER TABLE ONLY "COLUMNS_V2"
---     ADD CONSTRAINT "COLUMNS_V2_pkey" PRIMARY KEY ("CD_ID", "COLUMN_NAME");
-
-
---
--- Name: DATABASE_PARAMS_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
--- ALTER TABLE ONLY "DATABASE_PARAMS"
---     ADD CONSTRAINT "DATABASE_PARAMS_pkey" PRIMARY KEY ("DB_ID", "PARAM_KEY");
-
-
---
--- Name: DBPRIVILEGEINDEX; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
 ALTER TABLE ONLY "DB_PRIVS"
     ADD CONSTRAINT "DBPRIVILEGEINDEX" UNIQUE ("AUTHORIZER", "DB_ID", "PRINCIPAL_NAME", "PRINCIPAL_TYPE", "DB_PRIV", "GRANTOR", "GRANTOR_TYPE");
-
-
---
--- Name: DBS_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
--- ALTER TABLE ONLY "DBS"
---     ADD CONSTRAINT "DBS_pkey" PRIMARY KEY ("DB_ID");
-
-
---
--- Name: DB_PRIVS_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
--- ALTER TABLE ONLY "DB_PRIVS"
---     ADD CONSTRAINT "DB_PRIVS_pkey" PRIMARY KEY ("DB_GRANT_ID");
-
-
---
--- Name: GLOBALPRIVILEGEINDEX; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
 
 ALTER TABLE ONLY "GLOBAL_PRIVS"
     ADD CONSTRAINT "GLOBALPRIVILEGEINDEX" UNIQUE ("AUTHORIZER", "PRINCIPAL_NAME", "PRINCIPAL_TYPE", "USER_PRIV", "GRANTOR", "GRANTOR_TYPE");
 
-
---
--- Name: GLOBAL_PRIVS_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
--- ALTER TABLE ONLY "GLOBAL_PRIVS"
---     ADD CONSTRAINT "GLOBAL_PRIVS_pkey" PRIMARY KEY ("USER_GRANT_ID");
-
-
---
--- Name: IDXS_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
--- ALTER TABLE ONLY "IDXS"
---     ADD CONSTRAINT "IDXS_pkey" PRIMARY KEY ("INDEX_ID");
-
-
---
--- Name: INDEX_PARAMS_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
--- ALTER TABLE ONLY "INDEX_PARAMS"
---     ADD CONSTRAINT "INDEX_PARAMS_pkey" PRIMARY KEY ("INDEX_ID", "PARAM_KEY");
-
-
---
--- Name: NUCLEUS_TABLES_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
--- ALTER TABLE ONLY "NUCLEUS_TABLES"
---     ADD CONSTRAINT "NUCLEUS_TABLES_pkey" PRIMARY KEY ("CLASS_NAME");
-
-
---
--- Name: PARTITIONS_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
--- ALTER TABLE ONLY "PARTITIONS"
---     ADD CONSTRAINT "PARTITIONS_pkey" PRIMARY KEY ("PART_ID");
-
-
---
--- Name: PARTITION_EVENTS_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
--- ALTER TABLE ONLY "PARTITION_EVENTS"
---     ADD CONSTRAINT "PARTITION_EVENTS_pkey" PRIMARY KEY ("PART_NAME_ID");
-
-
---
--- Name: PARTITION_KEYS_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
--- ALTER TABLE ONLY "PARTITION_KEYS"
---     ADD CONSTRAINT "PARTITION_KEYS_pkey" PRIMARY KEY ("TBL_ID", "PKEY_NAME");
-
-
---
--- Name: PARTITION_KEY_VALS_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
--- ALTER TABLE ONLY "PARTITION_KEY_VALS"
---     ADD CONSTRAINT "PARTITION_KEY_VALS_pkey" PRIMARY KEY ("PART_ID", "INTEGER_IDX");
-
-
---
--- Name: PARTITION_PARAMS_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
--- ALTER TABLE ONLY "PARTITION_PARAMS"
---     ADD CONSTRAINT "PARTITION_PARAMS_pkey" PRIMARY KEY ("PART_ID", "PARAM_KEY");
-
-
---
--- Name: PART_COL_PRIVS_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
--- ALTER TABLE ONLY "PART_COL_PRIVS"
---     ADD CONSTRAINT "PART_COL_PRIVS_pkey" PRIMARY KEY ("PART_COLUMN_GRANT_ID");
-
-
---
--- Name: PART_PRIVS_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
--- ALTER TABLE ONLY "PART_PRIVS"
---     ADD CONSTRAINT "PART_PRIVS_pkey" PRIMARY KEY ("PART_GRANT_ID");
-
-
---
--- Name: ROLEENTITYINDEX; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
 ALTER TABLE ONLY "ROLES"
     ADD CONSTRAINT "ROLEENTITYINDEX" UNIQUE ("ROLE_NAME");
-
-
---
--- Name: ROLES_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
--- ALTER TABLE ONLY "ROLES"
---     ADD CONSTRAINT "ROLES_pkey" PRIMARY KEY ("ROLE_ID");
-
-
---
--- Name: ROLE_MAP_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
--- ALTER TABLE ONLY "ROLE_MAP"
---     ADD CONSTRAINT "ROLE_MAP_pkey" PRIMARY KEY ("ROLE_GRANT_ID");
-
-
---
--- Name: SDS_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
--- ALTER TABLE ONLY "SDS"
---     ADD CONSTRAINT "SDS_pkey" PRIMARY KEY ("SD_ID");
-
-
---
--- Name: SD_PARAMS_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
--- ALTER TABLE ONLY "SD_PARAMS"
---     ADD CONSTRAINT "SD_PARAMS_pkey" PRIMARY KEY ("SD_ID", "PARAM_KEY");
-
-
---
--- Name: SEQUENCE_TABLE_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
--- ALTER TABLE ONLY "SEQUENCE_TABLE"
---     ADD CONSTRAINT "SEQUENCE_TABLE_pkey" PRIMARY KEY ("SEQUENCE_NAME");
-
-
---
--- Name: SERDES_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
--- ALTER TABLE ONLY "SERDES"
---     ADD CONSTRAINT "SERDES_pkey" PRIMARY KEY ("SERDE_ID");
-
-
---
--- Name: SERDE_PARAMS_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
--- ALTER TABLE ONLY "SERDE_PARAMS"
---     ADD CONSTRAINT "SERDE_PARAMS_pkey" PRIMARY KEY ("SERDE_ID", "PARAM_KEY");
-
-
---
--- Name: SORT_COLS_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
--- ALTER TABLE ONLY "SORT_COLS"
---     ADD CONSTRAINT "SORT_COLS_pkey" PRIMARY KEY ("SD_ID", "INTEGER_IDX");
-
-
---
--- Name: TABLE_PARAMS_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
--- ALTER TABLE ONLY "TABLE_PARAMS"
---     ADD CONSTRAINT "TABLE_PARAMS_pkey" PRIMARY KEY ("TBL_ID", "PARAM_KEY");
-
-
---
--- Name: TBLS_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
--- ALTER TABLE ONLY "TBLS"
---     ADD CONSTRAINT "TBLS_pkey" PRIMARY KEY ("TBL_ID");
-
-
---
--- Name: TBL_COL_PRIVS_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
--- ALTER TABLE ONLY "TBL_COL_PRIVS"
---     ADD CONSTRAINT "TBL_COL_PRIVS_pkey" PRIMARY KEY ("TBL_COLUMN_GRANT_ID");
-
-
---
--- Name: TBL_PRIVS_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
--- ALTER TABLE ONLY "TBL_PRIVS"
---     ADD CONSTRAINT "TBL_PRIVS_pkey" PRIMARY KEY ("TBL_GRANT_ID");
-
-
---
--- Name: TYPES_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
--- ALTER TABLE ONLY "TYPES"
---     ADD CONSTRAINT "TYPES_pkey" PRIMARY KEY ("TYPES_ID");
-
-
---
--- Name: TYPE_FIELDS_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
--- ALTER TABLE ONLY "TYPE_FIELDS"
---     ADD CONSTRAINT "TYPE_FIELDS_pkey" PRIMARY KEY ("TYPE_NAME", "FIELD_NAME");
-
--- ALTER TABLE ONLY "SKEWED_STRING_LIST"
---     ADD CONSTRAINT "SKEWED_STRING_LIST_pkey" PRIMARY KEY ("STRING_LIST_ID");
-
--- ALTER TABLE ONLY "SKEWED_STRING_LIST_VALUES"
---     ADD CONSTRAINT "SKEWED_STRING_LIST_VALUES_pkey" PRIMARY KEY ("STRING_LIST_ID", "INTEGER_IDX");
-
-
--- ALTER TABLE ONLY "SKEWED_COL_NAMES"
---     ADD CONSTRAINT "SKEWED_COL_NAMES_pkey" PRIMARY KEY ("SD_ID", "INTEGER_IDX");
-
--- ALTER TABLE ONLY "SKEWED_COL_VALUE_LOC_MAP"
---     ADD CONSTRAINT "SKEWED_COL_VALUE_LOC_MAP_pkey" PRIMARY KEY ("SD_ID", "STRING_LIST_ID_KID");
-
--- ALTER TABLE ONLY "SKEWED_VALUES"
---     ADD CONSTRAINT "SKEWED_VALUES_pkey" PRIMARY KEY ("SD_ID_OID", "INTEGER_IDX");
-
---
--- Name: TAB_COL_STATS_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
--- ALTER TABLE ONLY "TAB_COL_STATS" ADD CONSTRAINT "TAB_COL_STATS_pkey" PRIMARY KEY("CS_ID");
-
---
--- Name: PART_COL_STATS_pkey; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
--- ALTER TABLE ONLY "PART_COL_STATS" ADD CONSTRAINT "PART_COL_STATS_pkey" PRIMARY KEY("CS_ID");
-
---
--- Name: UNIQUEINDEX; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
 
 ALTER TABLE ONLY "IDXS"
     ADD CONSTRAINT "UNIQUEINDEX" UNIQUE ("INDEX_NAME", "ORIG_TBL_ID");
 
-
---
--- Name: UNIQUEPARTITION; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
 ALTER TABLE ONLY "PARTITIONS"
     ADD CONSTRAINT "UNIQUEPARTITION" UNIQUE ("PART_NAME", "TBL_ID");
-
-
---
--- Name: UNIQUETABLE; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
 
 ALTER TABLE ONLY "TBLS"
     ADD CONSTRAINT "UNIQUETABLE" UNIQUE ("TBL_NAME", "DB_ID");
 
-
---
--- Name: UNIQUE_DATABASE; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
 ALTER TABLE ONLY "DBS"
     ADD CONSTRAINT "UNIQUE_DATABASE" UNIQUE ("NAME", "CTLG_NAME");
-
-
---
--- Name: UNIQUE_TYPE; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
 
 ALTER TABLE ONLY "TYPES"
     ADD CONSTRAINT "UNIQUE_TYPE" UNIQUE ("TYPE_NAME");
 
-
---
--- Name: USERROLEMAPINDEX; Type: CONSTRAINT; Schema: public; Owner: hiveuser; Tablespace:
---
-
 ALTER TABLE ONLY "ROLE_MAP"
     ADD CONSTRAINT "USERROLEMAPINDEX" UNIQUE ("PRINCIPAL_NAME", "ROLE_ID", "GRANTOR", "GRANTOR_TYPE");
-
--- ALTER TABLE ONLY "METASTORE_DB_PROPERTIES"
---     ADD CONSTRAINT "PROPERTY_KEY_PK" PRIMARY KEY ("PROPERTY_KEY");
-
-
--- Resource plan: Primary key and unique key constraints.
--- ALTER TABLE ONLY "WM_RESOURCEPLAN"
---     ADD CONSTRAINT "WM_RESOURCEPLAN_pkey" PRIMARY KEY ("RP_ID");
 
 ALTER TABLE ONLY "WM_RESOURCEPLAN"
     ADD CONSTRAINT "UNIQUE_WM_RESOURCEPLAN" UNIQUE ("NAME");
 
--- ALTER TABLE ONLY "WM_POOL"
---     ADD CONSTRAINT "WM_POOL_pkey" PRIMARY KEY ("POOL_ID");
-
 ALTER TABLE ONLY "WM_POOL"
     ADD CONSTRAINT "UNIQUE_WM_POOL" UNIQUE ("RP_ID", "PATH");
-
--- ALTER TABLE ONLY "WM_TRIGGER"
---     ADD CONSTRAINT "WM_TRIGGER_pkey" PRIMARY KEY ("TRIGGER_ID");
 
 ALTER TABLE ONLY "WM_TRIGGER"
     ADD CONSTRAINT "UNIQUE_WM_TRIGGER" UNIQUE ("RP_ID", "NAME");
 
--- ALTER TABLE ONLY "WM_POOL_TO_TRIGGER"
---     ADD CONSTRAINT "WM_POOL_TO_TRIGGER_pkey" PRIMARY KEY ("POOL_ID", "TRIGGER_ID");
-
--- ALTER TABLE ONLY "WM_MAPPING"
---     ADD CONSTRAINT "WM_MAPPING_pkey" PRIMARY KEY ("MAPPING_ID");
-
 ALTER TABLE ONLY "WM_MAPPING"
     ADD CONSTRAINT "UNIQUE_WM_MAPPING" UNIQUE ("RP_ID", "ENTITY_TYPE", "ENTITY_NAME");
 
---
--- Name: BUCKETING_COLS_N49; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE INDEX "BUCKETING_COLS_N49" ON "BUCKETING_COLS" USING btree ("SD_ID");
-
-
---
--- Name: DATABASE_PARAMS_N49; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE INDEX "DATABASE_PARAMS_N49" ON "DATABASE_PARAMS" USING btree ("DB_ID");
 
-
---
--- Name: DB_PRIVS_N49; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE INDEX "DB_PRIVS_N49" ON "DB_PRIVS" USING btree ("DB_ID");
-
-
---
--- Name: IDXS_N49; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE INDEX "IDXS_N49" ON "IDXS" USING btree ("ORIG_TBL_ID");
 
-
---
--- Name: IDXS_N50; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE INDEX "IDXS_N50" ON "IDXS" USING btree ("INDEX_TBL_ID");
-
-
---
--- Name: IDXS_N51; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE INDEX "IDXS_N51" ON "IDXS" USING btree ("SD_ID");
 
-
---
--- Name: INDEX_PARAMS_N49; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE INDEX "INDEX_PARAMS_N49" ON "INDEX_PARAMS" USING btree ("INDEX_ID");
-
-
---
--- Name: PARTITIONCOLUMNPRIVILEGEINDEX; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE INDEX "PARTITIONCOLUMNPRIVILEGEINDEX" ON "PART_COL_PRIVS" USING btree ("AUTHORIZER", "PART_ID", "COLUMN_NAME", "PRINCIPAL_NAME", "PRINCIPAL_TYPE", "PART_COL_PRIV", "GRANTOR", "GRANTOR_TYPE");
 
-
---
--- Name: PARTITIONEVENTINDEX; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE INDEX "PARTITIONEVENTINDEX" ON "PARTITION_EVENTS" USING btree ("PARTITION_NAME");
-
-
---
--- Name: PARTITIONS_N49; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE INDEX "PARTITIONS_N49" ON "PARTITIONS" USING btree ("TBL_ID");
 
-
---
--- Name: PARTITIONS_N50; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE INDEX "PARTITIONS_N50" ON "PARTITIONS" USING btree ("SD_ID");
-
-
---
--- Name: PARTITION_KEYS_N49; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE INDEX "PARTITION_KEYS_N49" ON "PARTITION_KEYS" USING btree ("TBL_ID");
 
-
---
--- Name: PARTITION_KEY_VALS_N49; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE INDEX "PARTITION_KEY_VALS_N49" ON "PARTITION_KEY_VALS" USING btree ("PART_ID");
-
-
---
--- Name: PARTITION_PARAMS_N49; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE INDEX "PARTITION_PARAMS_N49" ON "PARTITION_PARAMS" USING btree ("PART_ID");
 
-
---
--- Name: PARTPRIVILEGEINDEX; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE INDEX "PARTPRIVILEGEINDEX" ON "PART_PRIVS" USING btree ("AUTHORIZER", "PART_ID", "PRINCIPAL_NAME", "PRINCIPAL_TYPE", "PART_PRIV", "GRANTOR", "GRANTOR_TYPE");
-
-
---
--- Name: PART_COL_PRIVS_N49; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE INDEX "PART_COL_PRIVS_N49" ON "PART_COL_PRIVS" USING btree ("PART_ID");
 
-
---
--- Name: PART_PRIVS_N49; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE INDEX "PART_PRIVS_N49" ON "PART_PRIVS" USING btree ("PART_ID");
-
-
---
--- Name: PCS_STATS_IDX; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE INDEX "PCS_STATS_IDX" ON "PART_COL_STATS" USING btree ("CAT_NAME", "DB_NAME","TABLE_NAME","COLUMN_NAME","PARTITION_NAME");
 
-
---
--- Name: ROLE_MAP_N49; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE INDEX "ROLE_MAP_N49" ON "ROLE_MAP" USING btree ("ROLE_ID");
-
-
---
--- Name: SDS_N49; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE INDEX "SDS_N49" ON "SDS" USING btree ("SERDE_ID");
 
-
---
--- Name: SD_PARAMS_N49; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE INDEX "SD_PARAMS_N49" ON "SD_PARAMS" USING btree ("SD_ID");
-
-
---
--- Name: SERDE_PARAMS_N49; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE INDEX "SERDE_PARAMS_N49" ON "SERDE_PARAMS" USING btree ("SERDE_ID");
 
-
---
--- Name: SORT_COLS_N49; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE INDEX "SORT_COLS_N49" ON "SORT_COLS" USING btree ("SD_ID");
-
-
---
--- Name: TABLECOLUMNPRIVILEGEINDEX; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE INDEX "TABLECOLUMNPRIVILEGEINDEX" ON "TBL_COL_PRIVS" USING btree ("AUTHORIZER", "TBL_ID", "COLUMN_NAME", "PRINCIPAL_NAME", "PRINCIPAL_TYPE", "TBL_COL_PRIV", "GRANTOR", "GRANTOR_TYPE");
 
-
---
--- Name: TABLEPRIVILEGEINDEX; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE INDEX "TABLEPRIVILEGEINDEX" ON "TBL_PRIVS" USING btree ("AUTHORIZER", "TBL_ID", "PRINCIPAL_NAME", "PRINCIPAL_TYPE", "TBL_PRIV", "GRANTOR", "GRANTOR_TYPE");
-
-
---
--- Name: TABLE_PARAMS_N49; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE INDEX "TABLE_PARAMS_N49" ON "TABLE_PARAMS" USING btree ("TBL_ID");
 
-
---
--- Name: TBLS_N49; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE INDEX "TBLS_N49" ON "TBLS" USING btree ("DB_ID");
-
-
---
--- Name: TBLS_N50; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE INDEX "TBLS_N50" ON "TBLS" USING btree ("SD_ID");
 
-
---
--- Name: TBL_COL_PRIVS_N49; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE INDEX "TBL_COL_PRIVS_N49" ON "TBL_COL_PRIVS" USING btree ("TBL_ID");
-
---
--- Name: TAB_COL_STATS_IDX; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE INDEX "TAB_COL_STATS_IDX" ON "TAB_COL_STATS" USING btree ("CAT_NAME", "DB_NAME","TABLE_NAME","COLUMN_NAME");
 
---
--- Name: TBL_PRIVS_N49; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE INDEX "TBL_PRIVS_N49" ON "TBL_PRIVS" USING btree ("TBL_ID");
-
-
---
--- Name: TYPE_FIELDS_N49; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE INDEX "TYPE_FIELDS_N49" ON "TYPE_FIELDS" USING btree ("TYPE_NAME");
 
---
--- Name: TAB_COL_STATS_N49; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE INDEX "TAB_COL_STATS_N49" ON "TAB_COL_STATS" USING btree ("TBL_ID");
-
---
--- Name: PART_COL_STATS_N49; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE INDEX "PART_COL_STATS_N49" ON "PART_COL_STATS" USING btree ("PART_ID");
 
---
--- Name: UNIQUEFUNCTION; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE UNIQUE INDEX "UNIQUEFUNCTION" ON "FUNCS" ("FUNC_NAME", "DB_ID");
 
---
--- Name: FUNCS_N49; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
-
 CREATE INDEX "FUNCS_N49" ON "FUNCS" ("DB_ID");
-
---
--- Name: FUNC_RU_N49; Type: INDEX; Schema: public; Owner: hiveuser; Tablespace:
---
 
 CREATE INDEX "FUNC_RU_N49" ON "FUNC_RU" ("FUNC_ID");
 
@@ -1378,10 +684,8 @@ CREATE INDEX "CONSTRAINTS_CONSTRAINT_TYPE_INDEX" ON "KEY_CONSTRAINTS" USING BTRE
 ALTER TABLE ONLY "SKEWED_STRING_LIST_VALUES"
     ADD CONSTRAINT "SKEWED_STRING_LIST_VALUES_fkey" FOREIGN KEY ("STRING_LIST_ID") REFERENCES "SKEWED_STRING_LIST"("STRING_LIST_ID");
 
-
 ALTER TABLE ONLY "SKEWED_COL_NAMES"
     ADD CONSTRAINT "SKEWED_COL_NAMES_fkey" FOREIGN KEY ("SD_ID") REFERENCES "SDS"("SD_ID");
-
 
 ALTER TABLE ONLY "SKEWED_COL_VALUE_LOC_MAP"
     ADD CONSTRAINT "SKEWED_COL_VALUE_LOC_MAP_fkey1" FOREIGN KEY ("SD_ID") REFERENCES "SDS"("SD_ID");
@@ -1395,246 +699,98 @@ ALTER TABLE ONLY "SKEWED_VALUES"
 ALTER TABLE ONLY "SKEWED_VALUES"
     ADD CONSTRAINT "SKEWED_VALUES_fkey2" FOREIGN KEY ("SD_ID_OID") REFERENCES "SDS"("SD_ID");
 
-
---
--- Name: BUCKETING_COLS_SD_ID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hiveuser
---
-
 ALTER TABLE ONLY "BUCKETING_COLS"
     ADD CONSTRAINT "BUCKETING_COLS_SD_ID_fkey" FOREIGN KEY ("SD_ID") REFERENCES "SDS"("SD_ID");
-
-
---
--- Name: COLUMNS_V2_CD_ID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hiveuser
---
 
 ALTER TABLE ONLY "COLUMNS_V2"
     ADD CONSTRAINT "COLUMNS_V2_CD_ID_fkey" FOREIGN KEY ("CD_ID") REFERENCES "CDS"("CD_ID");
 
-
---
--- Name: DATABASE_PARAMS_DB_ID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hiveuser
---
-
 ALTER TABLE ONLY "DATABASE_PARAMS"
     ADD CONSTRAINT "DATABASE_PARAMS_DB_ID_fkey" FOREIGN KEY ("DB_ID") REFERENCES "DBS"("DB_ID");
-
-
---
--- Name: DB_PRIVS_DB_ID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hiveuser
---
 
 ALTER TABLE ONLY "DB_PRIVS"
     ADD CONSTRAINT "DB_PRIVS_DB_ID_fkey" FOREIGN KEY ("DB_ID") REFERENCES "DBS"("DB_ID");
 
-
---
--- Name: IDXS_INDEX_TBL_ID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hiveuser
---
-
 ALTER TABLE ONLY "IDXS"
     ADD CONSTRAINT "IDXS_INDEX_TBL_ID_fkey" FOREIGN KEY ("INDEX_TBL_ID") REFERENCES "TBLS"("TBL_ID");
-
-
---
--- Name: IDXS_ORIG_TBL_ID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hiveuser
---
 
 ALTER TABLE ONLY "IDXS"
     ADD CONSTRAINT "IDXS_ORIG_TBL_ID_fkey" FOREIGN KEY ("ORIG_TBL_ID") REFERENCES "TBLS"("TBL_ID");
 
-
---
--- Name: IDXS_SD_ID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hiveuser
---
-
 ALTER TABLE ONLY "IDXS"
     ADD CONSTRAINT "IDXS_SD_ID_fkey" FOREIGN KEY ("SD_ID") REFERENCES "SDS"("SD_ID");
-
-
---
--- Name: INDEX_PARAMS_INDEX_ID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hiveuser
---
 
 ALTER TABLE ONLY "INDEX_PARAMS"
     ADD CONSTRAINT "INDEX_PARAMS_INDEX_ID_fkey" FOREIGN KEY ("INDEX_ID") REFERENCES "IDXS"("INDEX_ID");
 
-
---
--- Name: PARTITIONS_SD_ID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hiveuser
---
-
 ALTER TABLE ONLY "PARTITIONS"
     ADD CONSTRAINT "PARTITIONS_SD_ID_fkey" FOREIGN KEY ("SD_ID") REFERENCES "SDS"("SD_ID");
-
-
---
--- Name: PARTITIONS_TBL_ID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hiveuser
---
 
 ALTER TABLE ONLY "PARTITIONS"
     ADD CONSTRAINT "PARTITIONS_TBL_ID_fkey" FOREIGN KEY ("TBL_ID") REFERENCES "TBLS"("TBL_ID");
 
-
---
--- Name: PARTITION_KEYS_TBL_ID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hiveuser
---
-
 ALTER TABLE ONLY "PARTITION_KEYS"
     ADD CONSTRAINT "PARTITION_KEYS_TBL_ID_fkey" FOREIGN KEY ("TBL_ID") REFERENCES "TBLS"("TBL_ID");
-
-
---
--- Name: PARTITION_KEY_VALS_PART_ID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hiveuser
---
 
 ALTER TABLE ONLY "PARTITION_KEY_VALS"
     ADD CONSTRAINT "PARTITION_KEY_VALS_PART_ID_fkey" FOREIGN KEY ("PART_ID") REFERENCES "PARTITIONS"("PART_ID");
 
-
---
--- Name: PARTITION_PARAMS_PART_ID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hiveuser
---
-
 ALTER TABLE ONLY "PARTITION_PARAMS"
     ADD CONSTRAINT "PARTITION_PARAMS_PART_ID_fkey" FOREIGN KEY ("PART_ID") REFERENCES "PARTITIONS"("PART_ID");
-
-
---
--- Name: PART_COL_PRIVS_PART_ID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hiveuser
---
 
 ALTER TABLE ONLY "PART_COL_PRIVS"
     ADD CONSTRAINT "PART_COL_PRIVS_PART_ID_fkey" FOREIGN KEY ("PART_ID") REFERENCES "PARTITIONS"("PART_ID");
 
-
---
--- Name: PART_PRIVS_PART_ID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hiveuser
---
-
 ALTER TABLE ONLY "PART_PRIVS"
     ADD CONSTRAINT "PART_PRIVS_PART_ID_fkey" FOREIGN KEY ("PART_ID") REFERENCES "PARTITIONS"("PART_ID");
-
-
---
--- Name: ROLE_MAP_ROLE_ID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hiveuser
---
 
 ALTER TABLE ONLY "ROLE_MAP"
     ADD CONSTRAINT "ROLE_MAP_ROLE_ID_fkey" FOREIGN KEY ("ROLE_ID") REFERENCES "ROLES"("ROLE_ID");
 
-
---
--- Name: SDS_CD_ID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hiveuser
---
-
 ALTER TABLE ONLY "SDS"
     ADD CONSTRAINT "SDS_CD_ID_fkey" FOREIGN KEY ("CD_ID") REFERENCES "CDS"("CD_ID");
-
-
---
--- Name: SDS_SERDE_ID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hiveuser
---
 
 ALTER TABLE ONLY "SDS"
     ADD CONSTRAINT "SDS_SERDE_ID_fkey" FOREIGN KEY ("SERDE_ID") REFERENCES "SERDES"("SERDE_ID");
 
-
---
--- Name: SD_PARAMS_SD_ID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hiveuser
---
-
 ALTER TABLE ONLY "SD_PARAMS"
     ADD CONSTRAINT "SD_PARAMS_SD_ID_fkey" FOREIGN KEY ("SD_ID") REFERENCES "SDS"("SD_ID");
-
-
---
--- Name: SERDE_PARAMS_SERDE_ID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hiveuser
---
 
 ALTER TABLE ONLY "SERDE_PARAMS"
     ADD CONSTRAINT "SERDE_PARAMS_SERDE_ID_fkey" FOREIGN KEY ("SERDE_ID") REFERENCES "SERDES"("SERDE_ID");
 
-
---
--- Name: SORT_COLS_SD_ID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hiveuser
---
-
 ALTER TABLE ONLY "SORT_COLS"
     ADD CONSTRAINT "SORT_COLS_SD_ID_fkey" FOREIGN KEY ("SD_ID") REFERENCES "SDS"("SD_ID");
-
-
---
--- Name: TABLE_PARAMS_TBL_ID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hiveuser
---
 
 ALTER TABLE ONLY "TABLE_PARAMS"
     ADD CONSTRAINT "TABLE_PARAMS_TBL_ID_fkey" FOREIGN KEY ("TBL_ID") REFERENCES "TBLS"("TBL_ID");
 
-
---
--- Name: TBLS_DB_ID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hiveuser
---
-
 ALTER TABLE ONLY "TBLS"
     ADD CONSTRAINT "TBLS_DB_ID_fkey" FOREIGN KEY ("DB_ID") REFERENCES "DBS"("DB_ID");
-
-
---
--- Name: TBLS_SD_ID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hiveuser
---
 
 ALTER TABLE ONLY "TBLS"
     ADD CONSTRAINT "TBLS_SD_ID_fkey" FOREIGN KEY ("SD_ID") REFERENCES "SDS"("SD_ID");
 
-
---
--- Name: TBL_COL_PRIVS_TBL_ID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hiveuser
---
-
 ALTER TABLE ONLY "TBL_COL_PRIVS"
     ADD CONSTRAINT "TBL_COL_PRIVS_TBL_ID_fkey" FOREIGN KEY ("TBL_ID") REFERENCES "TBLS"("TBL_ID");
-
-
---
--- Name: TBL_PRIVS_TBL_ID_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hiveuser
---
 
 ALTER TABLE ONLY "TBL_PRIVS"
     ADD CONSTRAINT "TBL_PRIVS_TBL_ID_fkey" FOREIGN KEY ("TBL_ID") REFERENCES "TBLS"("TBL_ID");
 
-
---
--- Name: TYPE_FIELDS_TYPE_NAME_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hiveuser
---
-
 ALTER TABLE ONLY "TYPE_FIELDS"
     ADD CONSTRAINT "TYPE_FIELDS_TYPE_NAME_fkey" FOREIGN KEY ("TYPE_NAME") REFERENCES "TYPES"("TYPES_ID");
 
---
--- Name: TAB_COL_STATS_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hiveuser
---
 ALTER TABLE ONLY "TAB_COL_STATS" ADD CONSTRAINT "TAB_COL_STATS_fkey" FOREIGN KEY("TBL_ID") REFERENCES "TBLS"("TBL_ID");
 
-
---
--- Name: PART_COL_STATS_fkey; Type: FK CONSTRAINT; Schema: public; Owner: hiveuser
---
 ALTER TABLE ONLY "PART_COL_STATS" ADD CONSTRAINT "PART_COL_STATS_fkey" FOREIGN KEY("PART_ID") REFERENCES "PARTITIONS"("PART_ID");
 
 ALTER TABLE "DBS" ADD CONSTRAINT "DBS_FK1" FOREIGN KEY ("CTLG_NAME") REFERENCES "CTLGS" ("NAME");
 
--- ALTER TABLE ONLY "VERSION" ADD CONSTRAINT "VERSION_pkey" PRIMARY KEY ("VER_ID");
-
--- Name: FUNCS_FK1; Type: FK CONSTRAINT; Schema: public; Owner: hiveuser
 ALTER TABLE ONLY "FUNCS"
     ADD CONSTRAINT "FUNCS_FK1" FOREIGN KEY ("DB_ID") REFERENCES "DBS" ("DB_ID");
 
--- Name: FUNC_RU_FK1; Type: FK CONSTRAINT; Schema: public; Owner: hiveuser
 ALTER TABLE ONLY "FUNC_RU"
     ADD CONSTRAINT "FUNC_RU_FK1" FOREIGN KEY ("FUNC_ID") REFERENCES "FUNCS" ("FUNC_ID");
-
--- Resource plan FK constraints.
 
 ALTER TABLE ONLY "WM_POOL"
     ADD CONSTRAINT "WM_POOL_FK1" FOREIGN KEY ("RP_ID") REFERENCES "WM_RESOURCEPLAN" ("RP_ID");
@@ -1657,9 +813,6 @@ ALTER TABLE ONLY "WM_MAPPING"
 ALTER TABLE ONLY "WM_MAPPING"
     ADD CONSTRAINT "WM_MAPPING_FK2" FOREIGN KEY ("POOL_ID") REFERENCES "WM_POOL" ("POOL_ID");
 
--- ALTER TABLE ONLY "MV_CREATION_METADATA"
---     ADD CONSTRAINT "MV_CREATION_METADATA_PK" PRIMARY KEY ("MV_CREATION_METADATA_ID");
-
 CREATE INDEX "MV_UNIQUE_TABLE"
     ON "MV_CREATION_METADATA" USING btree ("TBL_NAME", "DB_NAME");
 
@@ -1668,17 +821,6 @@ ALTER TABLE ONLY "MV_TABLES_USED"
 
 ALTER TABLE ONLY "MV_TABLES_USED"
     ADD CONSTRAINT "MV_TABLES_USED_FK2" FOREIGN KEY ("TBL_ID") REFERENCES "TBLS" ("TBL_ID");
-
---
--- Name: public; Type: ACL; Schema: -; Owner: hiveuser
---
-
--- REVOKE ALL ON SCHEMA public FROM PUBLIC;
--- GRANT ALL ON SCHEMA public TO PUBLIC;
-
---
--- PostgreSQL database dump complete
---
 
 ------------------------------
 -- Transaction and lock tables
