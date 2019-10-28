@@ -15,3 +15,11 @@ USING btree
 ```
 
 Must have secure cluster to use password
+
+```
+--SET standard_conforming_strings = off;
+--SET check_function_bodies = false;
+--SET escape_string_warning = off;
+--SET default_tablespace = '';
+--SET default_with_oids = false;
+```
