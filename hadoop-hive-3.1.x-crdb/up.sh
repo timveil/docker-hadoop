@@ -1,6 +1,5 @@
 #!/bin/bash
 
-docker-compose build --no-cache
 docker-compose up --no-start
 
 docker-compose start metastore-db

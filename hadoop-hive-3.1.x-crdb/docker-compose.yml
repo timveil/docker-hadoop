@@ -81,7 +81,7 @@ services:
     container_name: metastore
     hostname: metastore
     environment:
-      - SERVICE_PRECONDITION=namenode:9870 datanode:9864 metastore-db:5432
+      - SERVICE_PRECONDITION=namenode:9870 datanode:9864 metastore-db:26257
     env_file:
       - core.env
       - yarn-remote.env
