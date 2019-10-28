@@ -23,3 +23,5 @@ Must have secure cluster to use password
 --SET default_tablespace = '';
 --SET default_with_oids = false;
 ```
+
+think i can remove metastore client cert and volume
