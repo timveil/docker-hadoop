@@ -1,0 +1,1 @@
+original Postgres SQL file can be found [here](https://github.com/apache/hive/blob/rel/release-3.1.2/standalone-metastore/src/main/sql/postgres/hive-schema-3.1.0.postgres.sql)
