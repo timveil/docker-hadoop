@@ -43,6 +43,9 @@ CREATE TABLE "CTLGS"
     "LOCATION_URI" VARCHAR(4000) NOT NULL
 );
 
+INSERT INTO "CTLGS"
+VALUES (1, 'hive', 'Default catalog for Hive', 'TBD');
+
 CREATE TABLE "DBS"
 (
     "DB_ID"           bigint                  NOT NULL,
@@ -51,7 +54,7 @@ CREATE TABLE "DBS"
     "NAME"            character varying(128)  DEFAULT NULL::character varying,
     "OWNER_NAME"      character varying(128)  DEFAULT NULL::character varying,
     "OWNER_TYPE"      character varying(10)   DEFAULT NULL::character varying,
-    "CTLG_NAME"       varchar(256),
+    "CTLG_NAME"       varchar(256)            DEFAULT 'hive',
     PRIMARY KEY ("DB_ID")
 );
 
@@ -862,8 +865,7 @@ ALTER TABLE ONLY "WM_MAPPING"
 ALTER TABLE ONLY "WM_MAPPING"
     ADD CONSTRAINT "WM_MAPPING_FK2" FOREIGN KEY ("POOL_ID") REFERENCES "WM_POOL" ("POOL_ID");
 
-CREATE INDEX "MV_UNIQUE_TABLE"
-    ON "MV_CREATION_METADATA" USING btree ("TBL_NAME", "DB_NAME");
+CREATE INDEX "MV_UNIQUE_TABLE" ON "MV_CREATION_METADATA" USING btree ("TBL_NAME", "DB_NAME");
 
 ALTER TABLE ONLY "MV_TABLES_USED"
     ADD CONSTRAINT "MV_TABLES_USED_FK1" FOREIGN KEY ("MV_CREATION_METADATA_ID") REFERENCES "MV_CREATION_METADATA" ("MV_CREATION_METADATA_ID");
