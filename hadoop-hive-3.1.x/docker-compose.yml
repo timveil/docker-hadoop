@@ -3,7 +3,7 @@ version: "3.7"
 services:
 
   namenode:
-    image: timveil/docker-hadoop-namenode:3.1.x
+    image: timveil/docker-hadoop-namenode:3.2.x
     container_name: namenode
     hostname: namenode
     environment:
@@ -15,7 +15,7 @@ services:
       - "9870:9870"
 
   datanode:
-    image: timveil/docker-hadoop-datanode:3.1.x
+    image: timveil/docker-hadoop-datanode:3.2.x
     container_name: datanode
     hostname: datanode
     environment:
@@ -27,7 +27,7 @@ services:
       - "9864:9864"
 
   resourcemanager:
-    image: timveil/docker-hadoop-resourcemanager:3.1.x
+    image: timveil/docker-hadoop-resourcemanager:3.2.x
     container_name: resourcemanager
     hostname: resourcemanager
     environment:
@@ -39,7 +39,7 @@ services:
       - "8088:8088"
 
   nodemanager:
-    image: timveil/docker-hadoop-nodemanager:3.1.x
+    image: timveil/docker-hadoop-nodemanager:3.2.x
     container_name: nodemanager
     hostname: nodemanager
     environment:
@@ -51,7 +51,7 @@ services:
       - "8042:8042"
 
   historyserver:
-    image: timveil/docker-hadoop-historyserver:3.1.x
+    image: timveil/docker-hadoop-historyserver:3.2.x
     container_name: historyserver
     hostname: historyserver
     environment:
