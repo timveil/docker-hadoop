@@ -1,4 +1,4 @@
-# Hadoop 3.1.x and Hive 3.1.x Example
+# Hadoop 3.2.x and Hive 3.1.x Example
 The `docker-compose.yml` contains the following services:
 * `namenode` - Apache Hadoop NameNode
 * `datanode` - Apache Hadoop DataNode
@@ -123,11 +123,11 @@ $ docker-compose exec hs2 bash
 * HAProxy Dashboard - http://localhost:8081
 
 ## Docker Images
-* Hadoop NameNode - [timveil/docker-hadoop-namenode:3.1.x](https://hub.docker.com/r/timveil/docker-hadoop-namenode/)
-* Hadoop DataNode - [timveil/docker-hadoop-datanode:3.1.x](https://hub.docker.com/r/timveil/docker-hadoop-datanode/)
-* YARN Resource Manager - [timveil/docker-hadoop-resourcemanager:3.1.x](https://hub.docker.com/r/timveil/docker-hadoop-resourcemanager/)
-* YARN Node Manager - [timveil/docker-hadoop-nodemanager:3.1.x](https://hub.docker.com/r/timveil/docker-hadoop-nodemanager/)
-* YARN Timeline Server - [timveil/docker-hadoop-historyserver:3.1.x](https://hub.docker.com/r/timveil/docker-hadoop-historyserver/)
+* Hadoop NameNode - [timveil/docker-hadoop-namenode:3.2.x](https://hub.docker.com/r/timveil/docker-hadoop-namenode/)
+* Hadoop DataNode - [timveil/docker-hadoop-datanode:3.2.x](https://hub.docker.com/r/timveil/docker-hadoop-datanode/)
+* YARN Resource Manager - [timveil/docker-hadoop-resourcemanager:3.2.x](https://hub.docker.com/r/timveil/docker-hadoop-resourcemanager/)
+* YARN Node Manager - [timveil/docker-hadoop-nodemanager:3.2.x](https://hub.docker.com/r/timveil/docker-hadoop-nodemanager/)
+* YARN Timeline Server - [timveil/docker-hadoop-historyserver:3.2.x](https://hub.docker.com/r/timveil/docker-hadoop-historyserver/)
 * Hive Hiverserver2 - [timveil/docker-hadoop-hive-hs2:3.1.x](https://hub.docker.com/r/timveil/docker-hadoop-hive-hs2/)
 * Hive Metastore - [timveil/docker-hadoop-hive-metastore:3.1.x](https://hub.docker.com/r/timveil/docker-hadoop-hive-metastore/)
 * Hive Metastore CockroachDB - [cockroachdb/cockroach:latest](https://hub.docker.com/r/cockroachdb/cockroach/)
