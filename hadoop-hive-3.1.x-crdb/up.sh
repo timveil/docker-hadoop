@@ -1,7 +1,9 @@
 #!/bin/bash
 
+export COMPOSE_PROJECT_NAME="hive31crdb"
+
 docker-compose build --no-cache
-docker-compose up -p hive-crdb --no-start
+docker-compose up --no-start
 
 docker-compose start roach-cert
 docker-compose start roach-0 roach-1 roach-2
