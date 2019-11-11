@@ -6,7 +6,7 @@ The `docker-compose.yml` contains the following services:
 * `nodemanager` - Apache Hadoop YARN Node Manager
 * `historyserver` - Apache Hadoop YARN Timeline Manager
 * `hs2` - Apache Hive HiveServer2
-* `metastore` - Apache Hive Metastore
+* `metastore` - Apache Hive Standalone Metastore
 * `metastore-db` - CockroachDB that supports the Apache Hive Metastore
 
 ## Configuration
@@ -128,9 +128,9 @@ $ docker-compose exec hs2 bash
 * YARN Resource Manager - [timveil/docker-hadoop-resourcemanager:3.2.x](https://hub.docker.com/r/timveil/docker-hadoop-resourcemanager/)
 * YARN Node Manager - [timveil/docker-hadoop-nodemanager:3.2.x](https://hub.docker.com/r/timveil/docker-hadoop-nodemanager/)
 * YARN Timeline Server - [timveil/docker-hadoop-historyserver:3.2.x](https://hub.docker.com/r/timveil/docker-hadoop-historyserver/)
-* Hive Hiverserver2 - [timveil/docker-hadoop-hive-hs2:3.1.x](https://hub.docker.com/r/timveil/docker-hadoop-hive-hs2/)
-* Hive Metastore - [timveil/docker-hadoop-hive-metastore:3.1.x](https://hub.docker.com/r/timveil/docker-hadoop-hive-metastore/)
-* Hive Metastore CockroachDB - [cockroachdb/cockroach:latest](https://hub.docker.com/r/cockroachdb/cockroach/)
+* Hive Hiverserver2 - [timveil/docker-hadoop-hive-hs2:3.1.x-fork](https://hub.docker.com/r/timveil/docker-hadoop-hive-hs2/)
+* Hive Metastore Standalone - [timveil/docker-hadoop-hive-metastore-standalone:3.1.x](https://hub.docker.com/repository/docker/timveil/docker-hadoop-hive-metastore-standalone)
+* CockroachDB - [cockroachdb/cockroach-unstable:latest](https://hub.docker.com/r/cockroachdb/cockroach-unstable)
 
 ## Open Interactive Shells
 ```bash
