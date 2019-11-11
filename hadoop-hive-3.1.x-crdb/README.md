@@ -39,6 +39,9 @@ CORE_CONF_hadoop_http_staticuser_user=root
 HDFS_CONF_dfs_namenode_datanode_registration_ip___hostname___check=false
 HDFS_CONF_dfs_permissions_enabled=false
 HDFS_CONF_dfs_webhdfs_enabled=true
+HDFS_CONF_dfs_replication=1
+
+MAPRED_CONF_mapreduce_framework_name=yarn
 
 YARN_CONF_yarn_nodemanager_resource_memory___mb=6144
 YARN_CONF_yarn_nodemanager_aux___services=mapreduce_shuffle
@@ -48,18 +51,22 @@ YARN_CONF_yarn_resourcemanager_store_class=org.apache.hadoop.yarn.server.resourc
 YARN_CONF_yarn_resourcemanager_system___metrics___publisher_enabled=true
 YARN_CONF_yarn_timeline___service_enabled=true
 ```
-
 ### hive.env
 ```properties
-HIVE_SITE_CONF_javax_jdo_option_ConnectionURL=jdbc:postgresql://metastore-db:5432/metastore?ApplicationName=hive
-HIVE_SITE_CONF_javax_jdo_option_ConnectionDriverName=org.postgresql.Driver
-HIVE_SITE_CONF_javax_jdo_option_ConnectionUserName=hive
-HIVE_SITE_CONF_javax_jdo_option_ConnectionPassword=hive
 HIVE_SITE_CONF_hive_server2_transport_mode=binary
 HIVE_SITE_CONF_hive_execution_engine=tez
-HIVE_SITE_CONF_datanucleus_schema_autoCreateAll=false
+HIVE_SITE_CONF_hive_metastore_uri_resolver=org.apache.hadoop.hive.metastore.hooks.SimpleURIResolver
+HIVE_SITE_CONF_hive_metastore_uris=thrift://metastore:9083
 ```
-
+### metastore-standalone.env
+```properties
+METASTORE_STANDALONE_CONF_javax_jdo_option_ConnectionURL=jdbc:postgresql://metastore-db:5432/metastore?ApplicationName=metastore
+METASTORE_STANDALONE_CONF_javax_jdo_option_ConnectionDriverName=org.postgresql.Driver
+METASTORE_STANDALONE_CONF_javax_jdo_option_ConnectionUserName=hive
+METASTORE_STANDALONE_CONF_javax_jdo_option_ConnectionPassword=hive
+METASTORE_STANDALONE_CONF_datanucleusq_schema_autoCreateAll=false
+METASTORE_STANDALONE_CONF_metastore_metastore_event_db_notification_api_auth=false
+```
 ### yarn-node-manager.env
 ```properties
 YARN_CONF_yarn_resourcemanager_resource___tracker_address=resourcemanager:8031
@@ -75,11 +82,6 @@ YARN_CONF_yarn_resourcemanager_resource___tracker_address=resourcemanager:8031
 
 ### yarn-timeline.env
 ```properties
-```
-
-### metastore.env
-```properties
-METASTORE_SITE_CONF_metastore_thrift_uris=thrift://metastore:9083
 ```
 
 ## Docker Compose
