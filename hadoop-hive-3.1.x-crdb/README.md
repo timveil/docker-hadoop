@@ -105,7 +105,7 @@ YARN_CONF_yarn_resourcemanager_resource___tracker_address=resourcemanager:8031
 Once all services are up you can create a simple hive table to test functionality.  For example:
 
 ```bash
-$ docker-compose exec hs2 bash
+$ docker exec -ti hs2 /bin/bash
 # /opt/hive/bin/beeline -u jdbc:hive2://localhost:10000
 > CREATE TABLE pokes (foo INT, bar STRING);
 > LOAD DATA LOCAL INPATH '/opt/hive/examples/files/kv1.txt' OVERWRITE INTO TABLE pokes;
