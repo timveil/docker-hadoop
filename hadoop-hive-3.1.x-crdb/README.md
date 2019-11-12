@@ -132,7 +132,7 @@ $ docker exec -ti hs2 /bin/bash
 * YARN Timeline Server - [timveil/docker-hadoop-historyserver:3.1.x](https://hub.docker.com/r/timveil/docker-hadoop-historyserver/)
 * Hive Hiverserver2 - [timveil/docker-hadoop-hive-hs2:3.1.x-fork](https://hub.docker.com/r/timveil/docker-hadoop-hive-hs2/)
 * Hive Metastore Standalone - [timveil/docker-hadoop-hive-metastore-standalone:3.1.x](https://hub.docker.com/repository/docker/timveil/docker-hadoop-hive-metastore-standalone)
-* CockroachDB - [cockroachdb/cockroach-unstable:latest](https://hub.docker.com/r/cockroachdb/cockroach-unstable)
+* CockroachDB - [cockroachdb/cockroach:latest](https://hub.docker.com/r/cockroachdb/cockroach)
 
 ## Open Interactive Shells
 ```bash
