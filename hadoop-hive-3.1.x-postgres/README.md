@@ -1,4 +1,4 @@
-# Hadoop 3.2.x and Hive 3.1.x Example
+# Hadoop 3.2.x and Hive 3.1.x Example - PostgreSQL
 The `docker-compose.yml` contains the following services:
 * `namenode` - Apache Hadoop NameNode
 * `datanode` - Apache Hadoop DataNode
