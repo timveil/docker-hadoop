@@ -101,11 +101,14 @@ services:
   metastore-db:
     container_name: metastore-db
     hostname: metastore-db
-    build: haproxy
+    image: timveil/dynamic-haproxy:latest
     ports:
       - "5432:5432"
       - "8080:8080"
       - "8081:8081"
+    environment:
+      - NODES=roach-0 roach-1 roach-2
+      - HTTP_BIND_PORT=5432
     depends_on:
       - roach-0
       - roach-1
