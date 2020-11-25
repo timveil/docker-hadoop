@@ -1,5 +1,5 @@
 # Hadoop 3.2.x and Hive 3.1.x Example - CockroachDB
-This example relies on a forked version of Hive 3.1.2 that supports the CockroachDB syntax.  The changes were minimal and could be incorporated into future versions of Apache Hive.  See [here](https://github.com/timveil/hive/tree/release-3.1.2) for details on the CockroachDB compatible fork 
+This example relies on a forked version of Hive 3.1.2 that supports CockroachDB.  The changes were minimal and could be incorporated into future versions of Apache Hive.  See [here](https://github.com/timveil/hive/tree/release-3.1.2) for details on the CockroachDB compatible fork. 
 
 The `docker-compose.yml` contains the following services:
 * `namenode` - Apache Hadoop NameNode
