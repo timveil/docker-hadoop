@@ -17,6 +17,7 @@ docker-compose exec roach-0 /cockroach/cockroach sql --certs-dir=/certs --host=r
 docker-compose exec roach-0 /cockroach/cockroach sql --certs-dir=/certs --host=roach-0 --execute="CREATE DATABASE metastore;"
 docker-compose exec roach-0 /cockroach/cockroach sql --certs-dir=/certs --host=roach-0 --execute="CREATE USER hive WITH PASSWORD 'hive';"
 docker-compose exec roach-0 /cockroach/cockroach sql --certs-dir=/certs --host=roach-0 --execute="GRANT ALL ON DATABASE metastore TO hive;"
+docker-compose exec roach-0 /cockroach/cockroach sql --certs-dir=/certs --host=roach-0 --execute="GRANT admin TO hive;"
 
 docker-compose exec -T roach-0 /cockroach/cockroach sql --certs-dir=/certs --host=roach-0 --database=metastore < sql/hive-schema-3.1.0.crdb.sql
 
