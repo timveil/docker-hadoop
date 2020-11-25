@@ -108,7 +108,7 @@ services:
       - "8081:8081"
     environment:
       - NODES=roach-0 roach-1 roach-2
-      - HTTP_BIND_PORT=5432
+      - SQL_BIND_PORT=5432
     depends_on:
       - roach-0
       - roach-1
@@ -128,7 +128,7 @@ services:
     container_name: roach-0
     hostname: roach-0
     image: cockroachdb/cockroach:latest
-    command: start --logtostderr=WARNING --certs-dir=/certs --listen-addr=roach-0:26257 --advertise-addr=roach-0:26257
+    command: start-single-node --logtostderr=WARNING --certs-dir=/certs --listen-addr=roach-0:26257 --advertise-addr=roach-0:26257
     volumes:
       - certs-roach-0:/certs
       - ${PWD}/sql:/cockroach/sql

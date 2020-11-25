@@ -1,4 +1,6 @@
 # Hadoop 3.2.x and Hive 3.1.x Example - CockroachDB
+This example relies on a forked version of Hive 3.1.2 that supports the CockroachDB syntax.  The changes were minimal and could be incorporated into future versions of Apache Hive.  See [here](https://github.com/timveil/hive/tree/release-3.1.2) for details on the CockroachDB compatible fork 
+
 The `docker-compose.yml` contains the following services:
 * `namenode` - Apache Hadoop NameNode
 * `datanode` - Apache Hadoop DataNode
@@ -121,7 +123,7 @@ $ docker exec -ti hs2 /bin/bash
 * YARN Node Manager - http://localhost:8042
 * YARN Application History - http://localhost:8188
 * HiveServer 2 - http://localhost:10002
-* CockroachDB Dashboard - http://localhost:8080
+* CockroachDB Dashboard - [http://localhost:8080](http://localhost:8080).  Admin UI Username is `hive` and Password is `hive`.
 * HAProxy Dashboard - http://localhost:8081
 
 ## Docker Images
