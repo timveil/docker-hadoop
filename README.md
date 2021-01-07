@@ -9,7 +9,7 @@ I'm currently maintaining 3 Hadoop/Hive configurations:
 * [Hadoop 3.2.x + Hive 3.1.x with PostgreSQL](hadoop-hive-3.1.x-postgres)
 * [Hadoop 3.2.x + Hive 3.1.x with CockroachDB](hadoop-hive-3.1.x-crdb)
 * [Hadoop 2.8.x + Hive 2.3.x](hadoop-hive-2.3.x)
-* [Hadoop 2.7.x + HIve 1.2.x](hadoop-hive-1.2.x)
+* [Hadoop 2.7.x + Hive 1.2.x](hadoop-hive-1.2.x)
 
 ### Cleaning up Docker
 
