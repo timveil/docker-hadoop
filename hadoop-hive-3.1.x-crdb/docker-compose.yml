@@ -4,7 +4,7 @@ volumes:
   certs-roach-0:
   certs-roach-1:
   certs-roach-2:
-  certs-metastore:
+  certs-client:
 
 services:
 
@@ -89,7 +89,7 @@ services:
     environment:
       - SERVICE_PRECONDITION=namenode:9870 datanode:9864 metastore-db:5432
     volumes:
-      - certs-metastore:/certs
+      - certs-client:/certs
     env_file:
       - core.env
       - yarn-remote.env
@@ -122,7 +122,7 @@ services:
       - certs-roach-0:/certs/roach-0
       - certs-roach-1:/certs/roach-1
       - certs-roach-2:/certs/roach-2
-      - certs-metastore:/certs/metastore
+      - certs-client:/certs/client
 
   roach-0:
     container_name: roach-0
@@ -156,6 +156,23 @@ services:
     depends_on:
       - roach-cert
       - roach-0
+
+  roach-init:
+    container_name: roach-init
+    hostname: roach-init
+    image: timveil/cockroachdb-remote-client:latest
+    environment:
+      - COCKROACH_HOST=metastore-db:5432
+      - COCKROACH_INSECURE=false
+      - COCKROACH_CERTS_DIR=/certs
+      - DATABASE_NAME=metastore
+      - DATABASE_USER=hive
+      - DATABASE_PASSWORD=hive
+    volumes:
+      - certs-client:/certs
+    depends_on:
+      - metastore-db
+      - roach-cert
 
 
 

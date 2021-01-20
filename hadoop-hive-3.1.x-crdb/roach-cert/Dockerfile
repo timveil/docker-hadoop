@@ -47,9 +47,9 @@ RUN cp -v /tmp/certs/client/client.* /tmp/certs/roach-0 \
     && cp -v /tmp/certs/client/client.* /tmp/certs/roach-1 \
     && cp -v /tmp/certs/client/client.* /tmp/certs/roach-2
 
-RUN cockroach cert create-node roach-0 --certs-dir=/tmp/certs/roach-0 --ca-key=/tmp/safe/ca.key
-RUN cockroach cert create-node roach-1 --certs-dir=/tmp/certs/roach-1 --ca-key=/tmp/safe/ca.key
-RUN cockroach cert create-node roach-2 --certs-dir=/tmp/certs/roach-2 --ca-key=/tmp/safe/ca.key
+RUN cockroach cert create-node roach-0 metastore-db --certs-dir=/tmp/certs/roach-0 --ca-key=/tmp/safe/ca.key
+RUN cockroach cert create-node roach-1 metastore-db --certs-dir=/tmp/certs/roach-1 --ca-key=/tmp/safe/ca.key
+RUN cockroach cert create-node roach-2 metastore-db --certs-dir=/tmp/certs/roach-2 --ca-key=/tmp/safe/ca.key
 
 # Stage 2 - share certs
 
@@ -62,6 +62,6 @@ RUN mkdir -pv /certs/roach-0 /certs/roach-1 /certs/roach-2
 COPY --from=generator  /tmp/certs/roach-0/* /certs/roach-0/
 COPY --from=generator  /tmp/certs/roach-1/* /certs/roach-1/
 COPY --from=generator  /tmp/certs/roach-2/* /certs/roach-2/
-COPY --from=generator  /tmp/certs/client/* /certs/metastore/
+COPY --from=generator  /tmp/certs/client/* /certs/client/
 
 CMD tail -f /dev/null
