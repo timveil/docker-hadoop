@@ -128,7 +128,7 @@ services:
     container_name: roach-0
     hostname: roach-0
     image: cockroachdb/cockroach:latest
-    command: start-single-node --logtostderr=WARNING --certs-dir=/certs --listen-addr=roach-0:26257 --advertise-addr=roach-0:26257
+    command: start --logtostderr=WARNING --certs-dir=/certs --join=roach-0 --listen-addr=roach-0:26257 --advertise-addr=roach-0:26257
     volumes:
       - certs-roach-0:/certs
       - ${PWD}/sql:/cockroach/sql
@@ -162,9 +162,10 @@ services:
     hostname: roach-init
     image: timveil/cockroachdb-remote-client:latest
     environment:
-      - COCKROACH_HOST=metastore-db:5432
+      - COCKROACH_HOST=roach-0:5432
       - COCKROACH_INSECURE=false
       - COCKROACH_CERTS_DIR=/certs
+      - COCKROACH_INIT=true
       - DATABASE_NAME=metastore
       - DATABASE_USER=hive
       - DATABASE_PASSWORD=hive
